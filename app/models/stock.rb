@@ -6,40 +6,17 @@ class Stock < ApplicationRecord
     validates :name, :ticker, presence: true
 
     def self.new_search(ticker_symbol)
-<<<<<<< HEAD
         client = IEX::Api::Client.new(
-<<<<<<< HEAD
-            publishable_token: ENV['IEX_PUBLISHABLE_KEY'],
-            secret_token: ENV['IEX_SECRET_KEY'],
-=======
             publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
             secret_token: ENV["IEX_SECRET_KEY"],
-            # publishable_token: Rails.application.credentials.iex_client[:publishable_access_key],
-            # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
->>>>>>> 4d90c5200c88750ab67b81c5ea6254db9383568d
             endpoint: 'https://sandbox.iexapis.com/v1'
           )
-        begin
-            #ticker is upcased because if not, it doesn't recognize that I've already added the same stock
-            new(ticker: ticker_symbol.upcase, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
-        rescue => exception
-            return nil
-        end
-=======
-      client = IEX::Api::Client.new(
-        publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
-        secret_token: ENV["IEX_SECRET_KEY"],
-            # publishable_token: Rails.application.credentials.iex_client[:publishable_access_key],
-            # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
-        endpoint: 'https://sandbox.iexapis.com/v1'
-        )
       begin
           #ticker is upcased because if not, it doesn't recognize that I've already added the same stock
         new(ticker: ticker_symbol.upcase, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
       rescue => exception
         return nil
       end
->>>>>>> 251de134e7a4b29e632977105fb1f7e148f67bcb
     end
 
     def self.check_db(ticker_symbol, broker_id)
@@ -59,14 +36,14 @@ class Stock < ApplicationRecord
     #     logo.url
     # end
 
-    def self.stock_list
-      client = IEX::Api::Client.new(
-        publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
-        secret_token: ENV["IEX_SECRET_KEY"],
-                # publishable_token: Rails.application.credentials.iex_client[:publishable_access_key],
-                # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
-        endpoint: 'https://sandbox.iexapis.com/v1'
-        )
-      client.stock_market_list(:mostactive) # [{symbol: 'AAPL', ...}, {...}]
-    end
+    # def self.stock_list
+    #   client = IEX::Api::Client.new(
+    #     publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
+    #     secret_token: ENV["IEX_SECRET_KEY"],
+    #             # publishable_token: Rails.application.credentials.iex_client[:publishable_access_key],
+    #             # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
+    #     endpoint: 'https://sandbox.iexapis.com/v1'
+    #     )
+    #   client.stock_market_list(:mostactive) # [{symbol: 'AAPL', ...}, {...}]
+    # end
 end
