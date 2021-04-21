@@ -1,8 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
     def create
       build_resource(sign_up_params)
-      resource.admin_id = Admin.first.id  
-
+      resource.admin_id = Admin.first.id
       resource.save
       yield resource if block_given?
       if resource.persisted?
@@ -18,7 +17,14 @@ class RegistrationsController < Devise::RegistrationsController
       else
         clean_up_passwords resource
         set_minimum_password_length
-        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+        # respond_with resource
+        if resource.account_type=="buyer"
+          flash[:notice] = resource.errors.full_messages.to_sentence
+          redirect_to new_buyer_registration_path
+        else
+          flash[:notice] = resource.errors.full_messages.to_sentence
+          redirect_to new_broker_registration_path
+        end
       end
     end
 
