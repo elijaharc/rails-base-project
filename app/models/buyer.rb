@@ -3,9 +3,10 @@ class Buyer < ApplicationRecord
   has_many :buyer_stocks
   has_many :stocks, through: :buyer_stocks
   validates :email, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :confirmable, :registerable,
          :recoverable, :rememberable, :validatable
 
   def stock_already_bought?(stock_id, buyer_id)

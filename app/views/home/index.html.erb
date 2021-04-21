@@ -1,10 +1,16 @@
-<h1>HOME PAGE</h1>
-<%= link_to "Sign in as buyer", new_buyer_session_path, class: "nav-link" %>
-<%= link_to "Sign in as broker", new_broker_session_path, class: "nav-link" %>
-<%= link_to "Sign in as admin", new_admin_session_path, class: "nav-link" %>
-<%= link_to "Sign out (Buyer)", destroy_buyer_session_path, method: :delete %>
-<%= link_to "Sign out (Broker)", destroy_broker_session_path, method: :delete %>
-<%= link_to "Sign out (Admin)", destroy_admin_session_path, method: :delete %>
-
-<h3><%= link_to "Broker Index", broker_index_path %></h3>
-<h3><%= link_to "Buyer Index", buyer_index_path %></h3>
+<div class="container text-center">
+  <div class="row">
+      <div class="col-lg-6 col-sm-12">
+        <h1 class="text-success">Buyer</h1>
+        <%= image_tag ('buyer.svg'), style: "width: 80%" %>
+        <%= link_to "Sign in as Buyer", new_buyer_session_path, class: "btn btn-lg btn-success" %>
+        <%= link_to "Sign up as Buyer", new_buyer_registration_path, class: "btn btn-lg btn-success" %>
+      </div>
+      <div class="col-lg-6 col-sm-12">
+        <h1>Broker</h1>
+        <%= image_tag ('broker.svg'), style: "width: 80%" %>
+        <%= link_to "Sign in as Broker", new_broker_session_path, class: "btn btn-lg btn-primary" %>
+        <%= link_to "Sign up as Broker", new_broker_registration_path, class: "btn btn-lg btn-primary" %>
+      </div>
+  </div>
+</div>
