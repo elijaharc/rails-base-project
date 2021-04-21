@@ -1,6 +1,8 @@
 class Stock < ApplicationRecord
     has_many :broker_stocks
     has_many :brokers, through: :broker_stocks
+    has_many :buyer_stocks
+    has_many :buyers, through: :buyer_stocks
 
     # Did not include :price because it changes
     validates :name, :ticker, presence: true
@@ -9,8 +11,6 @@ class Stock < ApplicationRecord
       client = IEX::Api::Client.new(
         publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
         secret_token: ENV["IEX_SECRET_KEY"],
-            # publishable_token: Rails.application.credentials.iex_client[:publishable_access_key],
-            # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
         endpoint: 'https://sandbox.iexapis.com/v1'
         )
       begin
@@ -38,14 +38,14 @@ class Stock < ApplicationRecord
     #     logo.url
     # end
 
-    def self.stock_list
-      client = IEX::Api::Client.new(
-        publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
-        secret_token: ENV["IEX_SECRET_KEY"],
-                # publishable_token: Rails.application.credentials.iex_client[:publishable_access_key],
-                # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
-        endpoint: 'https://sandbox.iexapis.com/v1'
-        )
-      client.stock_market_list(:mostactive) # [{symbol: 'AAPL', ...}, {...}]
-    end
+    # def self.stock_list
+    #   client = IEX::Api::Client.new(
+    #     publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
+    #     secret_token: ENV["IEX_SECRET_KEY"],
+    #             # publishable_token: Rails.application.credentials.iex_client[:publishable_access_key],
+    #             # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
+    #     endpoint: 'https://sandbox.iexapis.com/v1'
+    #     )
+    #   client.stock_market_list(:mostactive) # [{symbol: 'AAPL', ...}, {...}]
+    # end
 end
