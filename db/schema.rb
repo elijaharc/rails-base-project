@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_19_144242) do
+ActiveRecord::Schema.define(version: 2021_04_21_112128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,17 @@ ActiveRecord::Schema.define(version: 2021_04_19_144242) do
     t.index ["reset_password_token"], name: "index_brokers_on_reset_password_token", unique: true
   end
 
+  create_table "buyer_stocks", force: :cascade do |t|
+    t.bigint "buyer_id", null: false
+    t.bigint "stock_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity"
+    t.float "total_price"
+    t.index ["buyer_id"], name: "index_buyer_stocks_on_buyer_id"
+    t.index ["stock_id"], name: "index_buyer_stocks_on_stock_id"
+  end
+
   create_table "buyers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -91,5 +102,7 @@ ActiveRecord::Schema.define(version: 2021_04_19_144242) do
   add_foreign_key "broker_stocks", "brokers"
   add_foreign_key "broker_stocks", "stocks"
   add_foreign_key "brokers", "admins"
+  add_foreign_key "buyer_stocks", "buyers"
+  add_foreign_key "buyer_stocks", "stocks"
   add_foreign_key "buyers", "admins"
 end
