@@ -4,10 +4,15 @@ class BuyerStocksController < ApplicationController
   def create
     existing_stock = BuyerStock.check_db(params[:stock][:stock_id], current_buyer.id)
     if existing_stock
-      add = existing_stock.quantity + params[:stock][:quantity].to_i
-      existing_stock.update(quantity: add)
-      flash[:notice] = "Successfully bought stock."
-      redirect_to buyer_portfolio_path
+      if params[:stock][:quantity]
+        flash[:notice] = "Quantity cannot be less than 1"
+        redirect_back(fallback_location: root_path)
+      else
+        add = existing_stock.quantity + params[:stock][:quantity].to_i
+        existing_stock.update(quantity: add)
+        flash[:notice] = "Successfully bought stock."
+        redirect_to buyer_portfolio_path
+      end
     else
       stock = Stock.find(params[:stock][:stock_id])
       @buyer_stock = BuyerStock.create(buyer_id: current_buyer.id, stock_id: stock.id, quantity: params[:stock][:quantity], stock_price: stock.last_price)
