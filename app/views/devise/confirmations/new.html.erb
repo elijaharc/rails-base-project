@@ -1,18 +1,29 @@
-<h2>Resend confirmation instructions</h2>
 
-<div class="width50">
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), class: "form-signin", html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-sm-12 mt-5">
+      <h2>Resend confirmation instructions</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+        <div class="width50">
+        <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), class: "form-signin", html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+        </div>
+
+        <div class="actions">
+        <%= f.button "Resend confirmation instructions", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>"}, class: "btn btn-lg btn-primary btn-block mt-3 mb-3" %>
+        </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-12 p-5">
+      <%= image_tag ('confirmation.svg') %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.button "Resend confirmation instructions", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>"}, class: "btn btn-lg btn-primary btn-block mt-3 mb-3" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
 </div>
+

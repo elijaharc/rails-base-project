@@ -11,11 +11,12 @@ class Stock < ApplicationRecord
       client = IEX::Api::Client.new(
         publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
         secret_token: ENV["IEX_SECRET_KEY"],
-        endpoint: 'https://sandbox.iexapis.com/v1'
+        # endpoint: 'https://sandbox.iexapis.com/v1'
+        endpoint: 'https://cloud.iexapis.com/v1'
         )
       begin
           #ticker is upcased because if not, it doesn't recognize that I've already added the same stock
-        new(ticker: ticker_symbol.upcase, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
+        new(ticker: ticker_symbol.upcase, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol), logo: client.logo(ticker_symbol))
       rescue => exception
         return nil
       end
