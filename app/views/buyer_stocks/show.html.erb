@@ -4,7 +4,7 @@
     <%= f.hidden_field :broker_id, :value => @broker %>
     <%= f.hidden_field :stock_id, :value => params[:stock_id] %>
     <%= f.label :last_price %>
-    <%= @broker_stock.last_price %>
+    $<%= @broker_stock.last_price %>
     <%= f.label :quantity %>
     <%= f.number_field :quantity, min: 1 %>
     <%= f.submit "Buy Stock" %>
