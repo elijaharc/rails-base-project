@@ -9,7 +9,7 @@
   <div class="card-body">
     <% if current_broker.can_add_stock?(@stock.ticker, current_broker.id) %>
         <%= link_to 'Add stock', broker_stocks_path(broker: current_broker, ticker: @stock.ticker), method: :post, class: "btn btn-dark" %>
-        <% else %>
+    <% else %>
         <p>Stock already added.</p>
     <% end %>
   </div>
