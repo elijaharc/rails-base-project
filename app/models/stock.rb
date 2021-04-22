@@ -1,7 +1,7 @@
 class Stock < ApplicationRecord
-    has_many :broker_stocks
+    has_many :broker_stocks, :dependent => :destroy
     has_many :brokers, through: :broker_stocks
-    has_many :buyer_stocks
+    has_many :buyer_stocks, :dependent => :destroy
     has_many :buyers, through: :buyer_stocks
 
     # Did not include :price because it changes
