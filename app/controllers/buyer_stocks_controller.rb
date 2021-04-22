@@ -8,8 +8,8 @@ class BuyerStocksController < ApplicationController
         flash[:notice] = "Quantity cannot be less than 1"
         redirect_back(fallback_location: root_path)
       else
-        add = existing_stock.quantity + params[:stock][:quantity].to_i
-        existing_stock.update(quantity: add)
+        new_total = existing_stock.quantity + params[:stock][:quantity].to_i
+        existing_stock.update(quantity: new_total)
         flash[:notice] = "Successfully bought stock."
         redirect_to buyer_portfolio_path
       end
