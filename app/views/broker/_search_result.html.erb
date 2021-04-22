@@ -1,7 +1,6 @@
 <% if @stock %>
 <div class="card bg-light text-dark neumorphic" style="width: 20rem;">
-  <img class="card-img-top p-3" src="" alt="Company Image">
-  
+  <img class="card-img-top p-3" src=<%= @stock.logo %> alt="Company Image">
   <div class="card-body">
     <h5 class="card-title"><strong>Ticker:</strong> <%= @stock.ticker %></h5>
     <p class="card-text"><strong>Name:</strong> <%= @stock.name %></p>
