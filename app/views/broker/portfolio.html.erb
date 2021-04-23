@@ -1,9 +1,11 @@
+<%= render "broker/broker_account" %>
+
 <h1>Broker Portfolio</h1>
 <% if @added_stocks.empty? %>
     <p>You do not have any stocks yet.</p>
 <% else %>
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead-dark">
             <tr>
             <th>Ticker</th>
             <th>Name</th>
@@ -12,12 +14,12 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="text-white">
             <% @added_stocks.each do |stock| %>
             <tr>
                 <td><%= stock.ticker %></td>
                 <td><%= stock.name %></td>
-                <td><%= stock.last_price %></td>
+                <td>$<%= stock.last_price %></td>
                 <td><%= link_to "Delete", broker_stock_path(stock), method: :delete, data: { confirm: "Are you sure?"} %></td>
             </tr>
             <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_163414) do
+ActiveRecord::Schema.define(version: 2021_04_22_173857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_163414) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity"
     t.float "total_price"
+    t.float "stock_price"
     t.index ["buyer_id"], name: "index_buyer_stocks_on_buyer_id"
     t.index ["stock_id"], name: "index_buyer_stocks_on_stock_id"
   end
@@ -107,6 +108,8 @@ ActiveRecord::Schema.define(version: 2021_04_22_163414) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "added_by"
     t.string "logo"
+    t.integer "quantity"
+    t.float "stock_price"
   end
 
   add_foreign_key "broker_stocks", "brokers"

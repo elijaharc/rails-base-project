@@ -1,7 +1,7 @@
 class Stock < ApplicationRecord
-    has_many :broker_stocks
+    has_many :broker_stocks, :dependent => :destroy
     has_many :brokers, through: :broker_stocks
-    has_many :buyer_stocks
+    has_many :buyer_stocks, :dependent => :destroy
     has_many :buyers, through: :buyer_stocks
 
     # Did not include :price because it changes
@@ -9,12 +9,9 @@ class Stock < ApplicationRecord
 
     def self.new_search(ticker_symbol)
       client = IEX::Api::Client.new(
-        publishable_token: 'pk_bacfbee65b8d4f7284e9ef165b0f801f',
-        secret_token: 'sk_3712c31a1ee241cf99ec4b70435ec1a0',
-        endpoint: 'https://cloud.iexapis.com/v1/'  
-        # publishable_token: ENV["IEX_SANDBOX_PUBLISHABLE_KEY"],
-        # secret_token: ENV["IEX_SANDBOX_SECRET_KEY"],
-        # endpoint: 'https://sandbox.iexapis.com/v1'  
+        publishable_token: ENV["IEX_SANDBOX_PUBLISHABLE_KEY"],
+        secret_token: ENV["IEX_SANDBOX_SECRET_KEY"],
+        endpoint: 'https://sandbox.iexapis.com/v1'  
         )
         logo = client.logo(ticker_symbol)
       begin

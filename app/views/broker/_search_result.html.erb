@@ -1,6 +1,6 @@
 <% if @stock %>
-<div class="card bg-light text-dark neumorphic" style="width: 20rem;">
-  <img class="card-img-top p-3" src=<%= @stock.logo %> alt="Company Image">
+
+  <%# <img class="card-img-top p-3" src="" alt="Company Image"> %>
   <div class="card-body">
     <h5 class="card-title"><strong>Ticker:</strong> <%= @stock.ticker %></h5>
     <p class="card-text"><strong>Name:</strong> <%= @stock.name %></p>
@@ -9,11 +9,10 @@
 
   <div class="card-body">
     <% if current_broker.can_add_stock?(@stock.ticker, current_broker.id) %>
-      <%= link_to 'Add stock', broker_stocks_path(broker: current_broker, ticker: @stock.ticker), method: :post, class: "btn btn-dark" %>
-      <% else %>
-      <p>Stock already added.</p>
+        <%= link_to 'Add stock', broker_stocks_path(broker: current_broker, ticker: @stock.ticker), method: :post, class: "btn btn-dark" %>
+    <% else %>
+        <p>Stock already added.</p>
     <% end %>
   </div>
 
-</div>
 <% end %>
