@@ -4,13 +4,13 @@ class BuyerStocksController < ApplicationController
   def create
     existing_stock = BuyerStock.check_db(params[:stock][:stock_id], current_buyer.id)
     if existing_stock
-      if params[:stock][:quantity]
-        flash[:notice] = "Quantity cannot be less than 1"
+      if params[:stock][:quantity].to_i < 1
+        flash[:notice] = 'Quantity cannot be less than 1.'
         redirect_back(fallback_location: root_path)
       else
         new_total = existing_stock.quantity + params[:stock][:quantity].to_i
         existing_stock.update(quantity: new_total)
-        flash[:notice] = "Successfully bought stock."
+        flash[:notice] = 'Successfully bought stock.'
         redirect_to buyer_portfolio_path
       end
     else
@@ -28,7 +28,7 @@ class BuyerStocksController < ApplicationController
   def destroy
     buyer_stock = BuyerStock.find_by(buyer_id: current_buyer.id, stock_id: params[:id])
     buyer_stock.destroy
-    flash[:notice] = "#Stock was successfully removed from your portfolio."
+    flash[:notice] = 'Stock was successfully removed from your portfolio.'
     redirect_to buyer_portfolio_path
   end
 
