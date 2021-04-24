@@ -406,57 +406,17 @@
   }
 }
 
-.menu_search_words {
-  display: none;
-}
-
-.menu_shopping_cart_words {
-  display: none;
-}
-
-.menu_account_words {
-  display: none;
-}
-
-.menu_login_words {
+.menu_account {
   display: none;
 }
 
 @media all and (max-width: 776px) {
-  .menu_search_icons {
+  .menu_account_icon {
     display: none;
   }
 
-  .menu_shopping_cart_icons {
-    display: none;
-  }
-
-  .menu_account_icons {
-    display: none;
-  }
-  .menu_search_words {
-    display: list-item;
-  }
-
-  .menu_shopping_cart_words {
-    display: list-item;
-  }
-
-  .menu_account_words {
-    display: list-item;
-  }
-
-  .menu_login_words {
+  .menu_account {
     display: list-item;
   }
 }
 
-.login_modal:hover {
-  color: white;
-  background-color: rgb(172, 172, 172);
-}
-
-.signup_modal:hover {
-  color: white;
-  background-color: rgb(172, 172, 172);
-}
