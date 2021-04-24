@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   # Broker
   get '/broker/index' => 'broker#index'
   get '/broker/portfolio' => 'broker#portfolio'
+  get '/broker/transactions' => 'broker#transactions'
 
   # Buyer
   get '/buyer/index' => 'buyer#index'
   get '/buyer/portfolio' => 'buyer#portfolio'
+  get '/buyer/transactions' => 'buyer#transactions'
   
   # Redirect fix for invalid sign up and sign in
   # devise_scope :buyer do

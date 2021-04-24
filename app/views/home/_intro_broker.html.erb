@@ -1,0 +1,17 @@
+<div class="container text-center w-100">
+  <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+        <h5 class="text-primary">Welcome Broker!</h5>
+        <div class="btn-group" role="group">
+            <%= link_to "Stocks", broker_index_path, class: "btn btn-sm btn-primary mr-1" %>
+            <%= link_to "Portfolio", broker_portfolio_path, class: "btn btn-sm btn-primary mr-1" %>
+            <%= link_to "Transactions", broker_transactions_path, class: "btn btn-sm btn-primary" %>
+        </div>
+        
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <%= image_tag ('broker.svg'), style: "min-width: 30%; width: 50%;", class: "img-fluid" %>
+      </div>
+  </div>
+</div>

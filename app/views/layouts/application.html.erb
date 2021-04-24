@@ -25,6 +25,17 @@
     <%= render 'layouts/messages'%>
 
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <div class="text-center">
+      <% if buyer_signed_in? %>
+      
+      <% elsif broker_signed_in? %>
+      <p class="text-primary">Broker Account | signed in as <%= current_broker.email %> <p>
+      <% elsif admin_signed_in? %>
+      
+      <% else %>
+      
+      <% end %>
+      </div>
     <%= yield %>
     </div>
 
