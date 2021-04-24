@@ -20,4 +20,8 @@ class Broker < ApplicationRecord
   def can_add_stock?(ticker_symbol, broker_id)
     !stock_already_added?(ticker_symbol, broker_id)
   end
+
+  def after_confirmation
+  UserMailer.welcome_email(self).deliver
+  end
 end

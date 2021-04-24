@@ -22,10 +22,10 @@
     <%= link_to "Sign out", destroy_broker_session_path, class: "text-dark dropdown-item", method: :delete %>
     </div>
         <li class="menu_account">
-            <%= link_to "Edit Account", edit_broker_registration_path, class: "text-white" %>
+            <%= link_to "Edit Account", edit_broker_registration_path, id: "menu_hover", class: "text-white" %>
         </li>
         <li class="menu_account">
-            <%= link_to "Sign out", destroy_broker_session_path, class: "text-white", method: :delete %>
+            <%= link_to "Sign out", destroy_broker_session_path, class: "text-white", id: "menu_hover", method: :delete %>
         </li>
         <li class="menu_account mt-2">
             <h5 class="text-primary">Broker Account: <%= current_broker.email %></h5>

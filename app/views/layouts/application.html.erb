@@ -29,7 +29,7 @@
       <% if buyer_signed_in? %>
       
       <% elsif broker_signed_in? %>
-      <p class="text-primary">Broker Account | signed in as <%= current_broker.email %> <p>
+      <p class="text-primary lead">Broker Account | signed in as <%= current_broker.email %> <p>
       <% elsif admin_signed_in? %>
       
       <% else %>
