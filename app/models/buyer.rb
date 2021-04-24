@@ -1,6 +1,6 @@
 class Buyer < ApplicationRecord
   belongs_to :admin
-  has_many :buyer_stocks
+  has_many :buyer_stocks, :dependent => :destroy
   has_many :stocks, through: :buyer_stocks
   validates :email, presence: true
   validates :password, presence: true, length: { minimum: 6 }
