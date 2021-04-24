@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_173857) do
+ActiveRecord::Schema.define(version: 2021_04_24_022555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_173857) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "admin_id"
     t.string "account_type", default: "broker"
+    t.string "broker_name"
     t.index ["admin_id"], name: "index_brokers_on_admin_id"
     t.index ["email"], name: "index_brokers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_brokers_on_reset_password_token", unique: true
@@ -70,8 +71,8 @@ ActiveRecord::Schema.define(version: 2021_04_22_173857) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity"
-    t.float "total_price"
     t.float "stock_price"
+    t.integer "broker_id"
     t.index ["buyer_id"], name: "index_buyer_stocks_on_buyer_id"
     t.index ["stock_id"], name: "index_buyer_stocks_on_stock_id"
   end
@@ -111,10 +112,28 @@ ActiveRecord::Schema.define(version: 2021_04_22_173857) do
     t.float "stock_price"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "broker_id", null: false
+    t.bigint "stock_id", null: false
+    t.bigint "buyer_id", null: false
+    t.string "ticker"
+    t.string "company_name"
+    t.string "stock_price"
+    t.string "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["broker_id"], name: "index_transactions_on_broker_id"
+    t.index ["buyer_id"], name: "index_transactions_on_buyer_id"
+    t.index ["stock_id"], name: "index_transactions_on_stock_id"
+  end
+
   add_foreign_key "broker_stocks", "brokers"
   add_foreign_key "broker_stocks", "stocks"
   add_foreign_key "brokers", "admins"
   add_foreign_key "buyer_stocks", "buyers"
   add_foreign_key "buyer_stocks", "stocks"
   add_foreign_key "buyers", "admins"
+  add_foreign_key "transactions", "brokers"
+  add_foreign_key "transactions", "buyers"
+  add_foreign_key "transactions", "stocks"
 end
