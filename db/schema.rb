@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_022555) do
+ActiveRecord::Schema.define(version: 2021_04_24_160324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,15 +107,15 @@ ActiveRecord::Schema.define(version: 2021_04_24_022555) do
     t.decimal "last_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "added_by"
     t.integer "quantity"
     t.float "stock_price"
     t.string "logo"
+    t.integer "added_by"
   end
 
   create_table "transactions", force: :cascade do |t|
     t.bigint "broker_id", null: false
-    t.integer "stock_id"
+    t.bigint "stock_id", null: false
     t.bigint "buyer_id", null: false
     t.string "ticker"
     t.string "company_name"
@@ -123,8 +123,10 @@ ActiveRecord::Schema.define(version: 2021_04_24_022555) do
     t.string "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "broker_name"
     t.index ["broker_id"], name: "index_transactions_on_broker_id"
     t.index ["buyer_id"], name: "index_transactions_on_buyer_id"
+    t.index ["stock_id"], name: "index_transactions_on_stock_id"
   end
 
   add_foreign_key "broker_stocks", "brokers"
@@ -133,6 +135,4 @@ ActiveRecord::Schema.define(version: 2021_04_24_022555) do
   add_foreign_key "buyer_stocks", "buyers"
   add_foreign_key "buyer_stocks", "stocks"
   add_foreign_key "buyers", "admins"
-  add_foreign_key "transactions", "brokers"
-  add_foreign_key "transactions", "buyers"
 end
