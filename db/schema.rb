@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2021_04_24_022555) do
 
   create_table "transactions", force: :cascade do |t|
     t.bigint "broker_id", null: false
-    t.bigint "stock_id", null: false
+    t.integer "stock_id"
     t.bigint "buyer_id", null: false
     t.string "ticker"
     t.string "company_name"
@@ -125,7 +125,6 @@ ActiveRecord::Schema.define(version: 2021_04_24_022555) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["broker_id"], name: "index_transactions_on_broker_id"
     t.index ["buyer_id"], name: "index_transactions_on_buyer_id"
-    t.index ["stock_id"], name: "index_transactions_on_stock_id"
   end
 
   add_foreign_key "broker_stocks", "brokers"
@@ -136,5 +135,4 @@ ActiveRecord::Schema.define(version: 2021_04_24_022555) do
   add_foreign_key "buyers", "admins"
   add_foreign_key "transactions", "brokers"
   add_foreign_key "transactions", "buyers"
-  add_foreign_key "transactions", "stocks"
 end
