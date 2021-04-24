@@ -1,35 +1,30 @@
+<%= render "broker/broker_account" %>
+
 <div class="container mt-2">
-  <div class="row">
-      <div class="col-lg-6 col-sm-12 mb-5 p-5">
-        <div class="mb-5">
-        <h1>Broker</h1>
-        <%= current_broker.email %>
-        </div>
-        <h3>Search Stock</h3>
+ 
+  <div class="row mb-3">
+    <div class="col-lg-6 col-sm-12 mb-2 px-5">
+        <h1>Search Stock</h1>
         <%= form_tag search_stock_path, remote: true, method: :get, :class => "form-signin" do %>
         <%= text_field_tag :stock, params[:stock], placeholder: 'Enter Stock Ticker...', class: "form-control" %>
-        <%= button_tag "Submit", type: :submit, id: "stock-search", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Searching..."}, class: "btn btn-lg btn-outline-primary btn-block mt-3"%>
+        <%= button_tag "Submit", id: "stock-search", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Searching..."}, class: "btn btn-lg btn-primary btn-block mt-3"%>
         <% end %>
-      </div>
-      <div class="col-lg-6 col-sm-12">
-        <div id='search_result'>
-        <%= render 'broker/search_result' %>
+        <div id='search_result' class="card bg-light text-dark neumorphic mx-auto" style="width: 100%;">
+          <%= render 'broker/search_result' %>
         </div>
-      </div>
-
-      
-      <div>
-      <table>
-        <h3>TOP 10 MOST ACTIVE STOCKS</h3>
-        <thead>
+    </div>
+    
+    <div class="col-lg-6 col-sm-12 p-1">
+      <table class="table">
+      <h3>TOP 10 MOST ACTIVE STOCKS</h3>
+        <thead class="thead-dark">
           <tr>
           <th>Ticker</th>
           <th>Name</th>
           <th>Last Price</th>
           </tr>
         </thead>
-
-        <tbody>
+        <tbody class="text-white" style="font-size: 16px;">
           <% @stocks_list.each do |stock| %>
           <tr>
             <td><%= stock.symbol %></td>
@@ -40,5 +35,6 @@
         </tbody>
       </table>
     </div>
+
   </div>
 </div>

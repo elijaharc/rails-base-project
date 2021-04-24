@@ -1,3 +1,11 @@
+<% if buyer_signed_in? %>
+    <h1 class="text-success">Hello Buyer!</h1>
+<% elsif broker_signed_in? %>
+    <%= render "broker/broker_account" %>
+    <h1 class="text-primary">Hello Broker!</h1>
+<% elsif admin_signed_in? %>
+    <h1 >Hello Admin!</h1>
+<% else %>
 <div class="container text-center">
   <div class="row">
       <div class="col-lg-6 col-sm-12">
@@ -7,10 +15,11 @@
         <%= link_to "Sign up as Buyer", new_buyer_registration_path, class: "btn btn-lg btn-success" %>
       </div>
       <div class="col-lg-6 col-sm-12">
-        <h1>Broker</h1>
+        <h1 class="text-primary">Broker</h1>
         <%= image_tag ('broker.svg'), style: "width: 80%" %>
         <%= link_to "Sign in as Broker", new_broker_session_path, class: "btn btn-lg btn-primary" %>
         <%= link_to "Sign up as Broker", new_broker_registration_path, class: "btn btn-lg btn-primary" %>
       </div>
   </div>
 </div>
+<% end %>

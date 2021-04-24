@@ -9,13 +9,14 @@ class Stock < ApplicationRecord
 
     def self.new_search(ticker_symbol)
       client = IEX::Api::Client.new(
-        publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
-        secret_token: ENV["IEX_SECRET_KEY"],
-        endpoint: 'https://sandbox.iexapis.com/v1'
+        publishable_token: ENV["IEX_SANDBOX_PUBLISHABLE_KEY"],
+        secret_token: ENV["IEX_SANDBOX_SECRET_KEY"],
+        endpoint: 'https://sandbox.iexapis.com/v1'  
         )
+        logo = client.logo(ticker_symbol)
       begin
           #ticker is upcased because if not, it doesn't recognize that I've already added the same stock
-        new(ticker: ticker_symbol.upcase, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
+        new(ticker: ticker_symbol.upcase, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol), logo: logo.url)
       rescue => exception
         return nil
       end
@@ -40,8 +41,8 @@ class Stock < ApplicationRecord
 
     def self.stock_list
       client = IEX::Api::Client.new(
-        publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
-        secret_token: ENV["IEX_SECRET_KEY"],
+        publishable_token: ENV["IEX_SANDBOX_PUBLISHABLE_KEY"],
+        secret_token: ENV["IEX_SANDBOX_SECRET_KEY"],
         endpoint: 'https://sandbox.iexapis.com/v1'
         )
       client.stock_market_list(:mostactive)
