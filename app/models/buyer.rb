@@ -3,7 +3,6 @@ class Buyer < ApplicationRecord
   has_many :buyer_stocks, :dependent => :destroy
   has_many :stocks, through: :buyer_stocks
   validates :email, presence: true
-  validates :password, presence: true, length: { minimum: 6 }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :confirmable, :registerable,
