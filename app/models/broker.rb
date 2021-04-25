@@ -22,6 +22,6 @@ class Broker < ApplicationRecord
   end
 
   def after_confirmation
-  UserMailer.welcome_email(self).deliver
+    UserMailer.welcome_email(self).deliver
   end
 end
