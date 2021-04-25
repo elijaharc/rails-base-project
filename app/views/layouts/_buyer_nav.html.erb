@@ -1,0 +1,29 @@
+<li><%= link_to "Stocks to buy", buyer_index_path %></li>
+<li><%= link_to "Buyer Portfolio", buyer_portfolio_path %></li>
+<li><%= link_to "Buyer Transactions", buyer_transactions_path %></li>
+<li class="menu_account_icon">
+    <a
+    id="navbarDropdownMenu"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    >
+    <i class="fas fa-user-circle fa-lg text-success"></i
+    ></a>
+    <div class="dropdown-menu dropdown-info" aria-labelledby="navbarDropdownMenu">
+        <a class="dropdown-item text-success inactiveLink" href="#"><%= current_buyer.email %></a>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Edit Account", edit_buyer_registration_path, class: "text-dark dropdown-item" %>
+        <%= link_to "Sign out", destroy_buyer_session_path, class: "text-dark dropdown-item", method: :delete %>
+    </div>
+        
+        <li class="menu_account">
+            <%= link_to "Edit Account", edit_buyer_registration_path, id: "menu_hover", class: "text-white" %>
+        </li>
+        <li class="menu_account">
+            <%= link_to "Sign out", destroy_buyer_session_path, class: "text-white", id: "menu_hover", method: :delete %>
+        </li>
+        <li class="menu_account mt-2">
+            <h5 class="text-success">Buyer Account: <%= current_buyer.email %></h5>
+        </li>
+</li>

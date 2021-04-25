@@ -1,18 +1,31 @@
 <% if @stock %>
 
   <%# <img class="card-img-top p-3" src="" alt="Company Image"> %>
-  <div class="card-body animate__animated animate__fadeIn">
-    <h5 class="card-title"><strong>Ticker:</strong> <%= @stock.ticker %></h5>
-    <p class="card-text"><strong>Name:</strong> <%= @stock.name %></p>
-    <p class="card-text"><strong>Last Price:</strong> <%=@stock.last_price %></p>
+  <div class="card-body border border-light rounded animate__animated animate__fadeIn">
+    <table>
+      <tbody>
+        <tr>
+          <th><h2 class="card-title">Ticker:</h2></th>
+          <td><h2 class="card-title"><%= @stock.ticker %></h2></td>
+        </tr>
+        <tr>
+          <th><h5 class="card-text">Name:</h5></th>
+          <td><h5 class="card-text"><%= @stock.name %></h5></td>
+        </tr>
+        <tr>
+          <th><h5 class="card-text">Last Price:</h5></th>
+          <td><h5 class="card-text"><%=@stock.last_price %></h5></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="card-footer mt-2 text-center animate__animated animate__fadeIn">
+      <% if current_broker.can_add_stock?(@stock.ticker, current_broker.id) %>
+          <%= button_to 'Add stock', broker_stocks_path(broker: current_broker, ticker: @stock.ticker), method: :post, class: "btn btn-lg btn-success" %>
+      <% else %>
+          <p>Stock already added.</p>
+      <% end %>
+    </div>
   </div>
-
-  <div class="card-body">
-    <% if current_broker.can_add_stock?(@stock.ticker, current_broker.id) %>
-        <%= button_to 'Add stock', broker_stocks_path(broker: current_broker, ticker: @stock.ticker), method: :post, class: "btn btn-primary" %>
-    <% else %>
-        <p>Stock already added.</p>
-    <% end %>
-  </div>
-
 <% end %>
+
+

@@ -1,6 +1,6 @@
-<li><%= link_to "Stocks", broker_index_path %></li>
-<li><%= link_to "Portfolio", broker_portfolio_path %></li>
-<li><%= link_to "Transactions", broker_transactions_path %></li>
+<li><%= link_to "Search Stocks", broker_index_path %></li>
+<li><%= link_to "Broker Portfolio", broker_portfolio_path %></li>
+<li><%= link_to "Broker Transactions", broker_transactions_path %></li>
 <li class="menu_account_icon">
     <a
     id="navbarDropdownMenu"
@@ -8,18 +8,13 @@
     aria-haspopup="true"
     aria-expanded="false"
     >
-    <i class="fas fa-user-circle fa-lg"></i
+    <i class="fas fa-user-circle fa-lg text-primary"></i
     ></a>
-    <div
-    class="dropdown-menu dropdown-info"
-    aria-labelledby="navbarDropdownMenu"
-    >
-    <div class="text-primary px-2 w-auto">
-    <h5 class="text-primary">Broker Account:</h5>
-    <p><%= current_broker.email %></p>
-    </div>
-    <%= link_to "Edit Account", edit_broker_registration_path, class: "text-dark dropdown-item" %>
-    <%= link_to "Sign out", destroy_broker_session_path, class: "text-dark dropdown-item", method: :delete %>
+    <div class="dropdown-menu dropdown-info" aria-labelledby="navbarDropdownMenu">
+    <a class="dropdown-item text-primary inactiveLink" href="#"><%= current_broker.email %></a>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Edit Account", edit_broker_registration_path, class: "text-dark dropdown-item" %>
+        <%= link_to "Sign out", destroy_broker_session_path, class: "text-dark dropdown-item", method: :delete %>
     </div>
         <li class="menu_account">
             <%= link_to "Edit Account", edit_broker_registration_path, id: "menu_hover", class: "text-white" %>

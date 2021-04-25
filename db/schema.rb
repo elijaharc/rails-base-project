@@ -135,7 +135,4 @@ ActiveRecord::Schema.define(version: 2021_04_24_160324) do
   add_foreign_key "buyer_stocks", "buyers"
   add_foreign_key "buyer_stocks", "stocks"
   add_foreign_key "buyers", "admins"
-  add_foreign_key "transactions", "brokers"
-  add_foreign_key "transactions", "buyers"
-  add_foreign_key "transactions", "stocks"
 end

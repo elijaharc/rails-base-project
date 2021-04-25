@@ -2,7 +2,7 @@
 <% if @added_stocks.empty? %>
     <p>You do not have any stocks yet.</p>
 <% else %>
-    <table class="table">
+    <table class="table table-responsive-sm">
         <thead class="thead-dark">
             <tr>
             <th>Ticker</th>
@@ -20,11 +20,11 @@
                 <td>$<%= stock.last_price %></td>
                 <% name = stock.name %>
                 <% ticker = stock.ticker %>
-                <td><%= link_to "Delete", broker_stock_path(stock), method: :delete, data: {title: 'Delete ' + ticker + ' ' + name, confirm: "Are you sure?"} %></td>
+                <td><%= link_to "Delete", broker_stock_path(stock), method: :delete, data: {title: 'Delete ' + ticker + ' ' + name, confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
             </tr>
             <% end %>
         </tbody>
     </table>
 <% end %>
 
-<%= link_to "Back", broker_index_path %>
+<%= button_to "Back", broker_index_path, {method: 'get', class: "btn btn-sm btn-secondary"} %>

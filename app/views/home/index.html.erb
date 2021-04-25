@@ -1,5 +1,5 @@
 <% if buyer_signed_in? %>
-    <h1 class="text-success">Hello Buyer!</h1>
+    <%= render "home/intro_buyer" %>
 <% elsif broker_signed_in? %>
     <%= render "home/intro_broker" %>
 <% elsif admin_signed_in? %>

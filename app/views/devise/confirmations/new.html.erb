@@ -4,7 +4,7 @@
     <div class="col-lg-6 col-sm-12 mt-5">
       <h2>Resend confirmation instructions</h2>
 
-        <div class="width50">
+        <div class="w-100">
         <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), class: "form-signin", html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
