@@ -11,6 +11,11 @@
         <% elsif broker_signed_in? %>
           <%= render "layouts/broker_nav" %>
         <% elsif admin_signed_in? %>
+        <li><%= link_to "All Users", admin_users_path %></li>
+        <li><%= link_to "New Broker", admin_new_broker_path %></li>
+        <li><%= link_to "New Buyer", admin_new_buyer_path %></li>
+        <li><%= link_to "Transactions", admin_transactions_path %></li>
+        <li><%= link_to "Pending", admin_pending_accounts_path %></li>
         <li><%= link_to "Sign out (Admin)", destroy_admin_session_path, method: :delete %></li>
         <% else %>
         <li><%= link_to "Home", root_path %></li>
