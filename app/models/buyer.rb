@@ -1,6 +1,6 @@
 class Buyer < ApplicationRecord
   belongs_to :admin
-  has_many :buyer_stocks
+  has_many :buyer_stocks, :dependent => :destroy
   has_many :stocks, through: :buyer_stocks
   validates :email, presence: true
   validates :password, presence: true, length: { minimum: 6 }
@@ -17,5 +17,9 @@ class Buyer < ApplicationRecord
 
   def can_buy_stock?(stock_id, broker_id)
     !stock_already_bought?(stock_id, broker_id)
-  end         
+  end
+  
+  def after_confirmation
+    UserMailer.welcome_email(self).deliver
+  end
 end
