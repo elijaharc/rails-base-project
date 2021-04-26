@@ -1,5 +1,5 @@
 <% if @stock %>
-
+<div class="card bg-primary text-white neumorphic" style="width: 100%;">
   <%# <img class="card-img-top p-3" src="" alt="Company Image"> %>
   <div class="card-body border border-light rounded animate__animated animate__fadeIn">
     <table>
@@ -18,14 +18,14 @@
         </tr>
       </tbody>
     </table>
-    <div class="card-footer mt-2 text-center animate__animated animate__fadeIn">
+    </div>
+
+    <div class="mt-2 text-center animate__animated animate__fadeIn">
       <% if current_broker.can_add_stock?(@stock.ticker, current_broker.id) %>
           <%= button_to 'Add stock', broker_stocks_path(broker: current_broker, ticker: @stock.ticker), method: :post, class: "btn btn-lg btn-success" %>
       <% else %>
           <p>Stock already added.</p>
       <% end %>
     </div>
-  </div>
+</end>
 <% end %>
-
-

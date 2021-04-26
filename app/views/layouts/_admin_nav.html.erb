@@ -1,0 +1,26 @@
+<li><%= link_to "All Users", admin_users_path, class: "font-1rem" %></li>
+<li><%= link_to "New Broker", admin_new_broker_path, class: "font-1rem" %></li>
+<li><%= link_to "New Buyer", admin_new_buyer_path, class: "font-1rem" %></li>
+<li><%= link_to "Transactions", admin_transactions_path, class: "font-1rem" %></li>
+<li><%= link_to "Pending", admin_pending_accounts_path, class: "font-1rem" %></li>
+<li class="menu_account_icon">
+    <a
+    id="navbarDropdownMenu"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    >
+    <i class="fas fa-user-circle fa-lg admin_color"></i
+    ></a>
+    <div class="dropdown-menu dropdown-info" aria-labelledby="navbarDropdownMenu">
+    <a class="dropdown-item inactiveLink" href="#"><span class="admin_color"><%= current_admin.email %></span></a>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Sign out", destroy_admin_session_path, class: "text-dark dropdown-item", method: :delete %>
+    </div>
+        <li class="menu_account">
+            <%= link_to "Sign out", destroy_admin_session_path, class: "text-white", id: "menu_hover", method: :delete %>
+        </li>
+        <li class="menu_account mt-2">
+            <h5 class="admin_color">Admin Account: <%= current_admin.email %></h5>
+        </li>
+</li>
