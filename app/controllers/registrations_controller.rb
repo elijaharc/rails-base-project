@@ -18,11 +18,10 @@ class RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       # respond_with resource
+      flash[:notice] = resource.errors.full_messages.to_sentence
       if resource.account_type == 'buyer'
-        flash[:notice] = resource.errors.full_messages.to_sentence
         redirect_to new_buyer_registration_path
       else
-        flash[:notice] = resource.errors.full_messages.to_sentence
         redirect_to new_broker_registration_path
       end
     end
