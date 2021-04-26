@@ -33,5 +33,9 @@ module RailsProject
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Time zone
+    config.time_zone = 'Beijing'
+    config.active_record.default_timezone = :local
   end
 end
