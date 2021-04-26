@@ -1,5 +1,5 @@
 class BuyerStocksController < ApplicationController
-  before_action :set_buyer_stock, only: %i[ show destroy ]
+  before_action :set_buyer_stock, only: %i[show destroy]
 
   def create
     stock = Stock.find(params[:stock][:stock_id])
