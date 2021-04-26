@@ -45,7 +45,9 @@
         </div>
         <% end %>
         <%= render "devise/shared/links" %>
-        <%= link_to "Log in as Admin", new_admin_session_path, class: "text-secondary" %>
+        <% if resource.account_type != "admin" %>
+        <%= link_to "Sign in as Admin", new_admin_session_path, class: "text-secondary" %>
+        <% end %>
       </div>
   </div>
 </div>

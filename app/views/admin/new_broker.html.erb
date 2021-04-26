@@ -1,13 +1,25 @@
-<h1>Create a new Broker</h1>
+<div class="container text-primary mt-2">
+  <div class="row">
+          
+   <div class="col-lg-6 col-sm-12 mb-5">
+        <h1>Create a new Broker</h1>
 
-<%= form_for @broker, :url => {:action => "new_broker"} do |f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-    <%= f.label :broker_name %>
-    <%= f.text_field :broker_name %>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-    <%= f.submit %>
-<% end %>
+        <%= form_for @broker, :url => {:action => "new_broker"}, class: "form-signin" do |f| %>
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control" %>
+            <%= f.label :broker_name %>
+            <%= f.text_field :broker_name, class: "form-control" %>
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control" %>
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+            <%= f.submit "Create Broker", class: "btn btn-lg btn-primary btn-block mt-3" %>
+        <% end %>
+   </div>
+      
+   <div class="col-lg-6 col-sm-12 p-5">
+        <%= image_tag ('broker.svg') %>
+   </div>
+  
+  </div>
+</div>

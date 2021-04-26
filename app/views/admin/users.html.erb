@@ -1,9 +1,16 @@
-<h1>Showing All Registered Users</h1>
+<div class="text-center">
+  <div class="btn-group mb-2" role="group">
+    <%= link_to "Create Broker Account", admin_new_broker_path, class: "btn btn-sm btn-primary  mr-1" %>
+    <%= link_to "Create Buyer Account", admin_new_buyer_path, class: "btn btn-sm btn-success" %>
+  </div>
+  <h1 class="display-4">Showing All Registered Users</h1>
+</div>
 <br>
 <% if !@all_brokers.empty? %>
-<h4>All Brokers</h4>
+<h1 class="text-primary">Brokers</h1>
+<%= button_to "Create Broker Account", admin_new_broker_path, {method: 'get', class: "btn btn-lg btn-primary"} %>
   <table class="table mt-3">
-    <thead class="thead-dark">
+    <thead class="bg-primary text-white">
       <tr>
       <th>Broker ID</th>
       <th>Broker Name</th>
@@ -12,14 +19,14 @@
       <th>Edit</th>
       </tr>
     </thead>
-    <tbody class="text-white" style="font-size: 16px;">
+    <tbody class="text-white">
       <% @all_brokers.each do |broker| %>
       <tr>
-        <td><%= broker.id %></td>
+        <td class="font-weight-bold"><%= broker.id %></td>
         <td><%= broker.broker_name %></td>
         <td><%= broker.email %></td>
-        <td><%= link_to 'View Broker', show_broker_path(broker), method: :get, class: "btn btn-dark" %></td>
-        <td><%= link_to 'Edit Broker', edit_broker_path(broker), method: :get, class: "btn btn-dark" %></td>
+        <td><%= link_to '', show_broker_path(broker), method: :get, class: "fas fa-eye text-primary" %></td>
+        <td><%= link_to '', edit_broker_path(broker), method: :get, class: "fas fa-edit text-primary" %></td>
       </tr>
       <% end %>
     </tbody>
@@ -27,11 +34,14 @@
 <% else %>
   <p>There are no registered Brokers yet.</p>
 <% end %>
+
 <br>
+
 <% if !@all_buyers.empty? %>
-<h4>All Buyers</h4>
+<h1 class="text-success">Buyers</h1>
+<%= button_to "Create Buyer Account", admin_new_buyer_path, {method: 'get', class: "btn btn-lg btn-success"} %>
   <table class="table mt-3">
-    <thead class="thead-dark">
+    <thead class="bg-success text-white">
       <tr>
       <th>Buyer ID</th>
       <th>Buyer Email</th>
@@ -42,10 +52,10 @@
     <tbody class="text-white" style="font-size: 16px;">
       <% @all_buyers.each do |buyer| %>
       <tr>
-        <td><%= buyer.id %></td>
+        <td class="font-weight-bold"><%= buyer.id %></td>
         <td><%= buyer.email %></td>
-        <td><%= link_to 'View Buyer', show_buyer_path(buyer), method: :get, class: "btn btn-dark" %></td>
-        <td><%= link_to 'Edit Buyer', edit_buyer_path(buyer), method: :get, class: "btn btn-dark" %></td>
+        <td><%= link_to '', show_buyer_path(buyer), method: :get, class: "fas fa-eye text-success" %></td>
+        <td><%= link_to '', edit_buyer_path(buyer), method: :get, class: "fas fa-edit text-success" %></td>
       </tr>
       <% end %>
     </tbody>

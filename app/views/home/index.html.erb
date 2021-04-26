@@ -3,7 +3,7 @@
 <% elsif broker_signed_in? %>
     <%= render "home/intro_broker" %>
 <% elsif admin_signed_in? %>
-    <h1 >Hello Admin!</h1>
+    <%= render "home/intro_admin" %>
 <% else %>
     <%= render "home/intro_page" %>
 <% end %>

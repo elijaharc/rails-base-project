@@ -1,24 +1,26 @@
-<h1>Viewing Buyer</h1>
+<div class="text-center">
+<h1 class="text-success">Buyer <%= @buyer.email %></h1>
+</div>
 
 <table class="table mt-3">
-    <thead class="thead-dark">
+    <thead class="bg-success text-white">
         <tr>
         <th>Buyer ID</th>
         <th>Buyer Email</th>
         <th>Buyer Created At</th>
         <th>Number of Stocks Bought</th>
-        <th>Action</th>
+        <th>Edit</th>
         </tr>
     </thead>
-    <tbody class="text-white" style="font-size: 16px;">
+    <tbody class="text-white">
         <tr>
         <td><%= @buyer.id %></td>
         <td><%= @buyer.email %></td>
-        <td><%= @buyer.created_at %></td>
-        <td><%= @buyer.stocks.count %></td>
-        <td><%= link_to 'Edit Buyer', edit_buyer_path(@buyer), method: :get, class: "btn btn-dark" %></td>
+        <td><%= @buyer.created_at.to_formatted_s(:long) %></td>
+        <td class="text-center"><%= @buyer.stocks.count %></td>
+        <td class="text-center"><%= link_to '', edit_buyer_path(@buyer), method: :get, class: "fas fa-edit text-success" %></td>
         </tr>
     </tbody>
 </table>
 
-<%= link_to "Back to Users", admin_users_path%>
+<%= button_to "Back to Users", admin_users_path, {method: 'get', class: "mt-5 btn btn-lg btn-secondary"} %>
