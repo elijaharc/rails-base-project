@@ -1,9 +1,9 @@
-<h1>Buyer Portfolio</h1>
+<h1 class="text-success">Buyer Portfolio</h1>
 <% if @bought_stocks.empty? %>
     <p>You have not bought any stocks yet.</p>
 <% else %>
-    <table>
-        <thead>
+    <table class="table table-responsive-sm">
+        <thead class="thead-dark">
             <tr>
             <th>Ticker</th>
             <th>Name</th>
@@ -15,20 +15,20 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="text-white">
             <% @bought_stocks.each do |stock| %>
             <tr>
                 <td><%= stock.ticker %></td>
                 <td><%= stock.name %></td>
                 <td>$<%= stock.last_price %></td>
                 <td><%= stock.buyer_stocks.first.quantity %></td>
-                <td><%= stock.brokers.first.broker_name %></td>
+                <td class="text-primary"><%= stock.brokers.first.broker_name %></td>
                 <td>$<%= (stock.buyer_stocks.first.quantity * stock.buyer_stocks.first.stock_price).to_f %></td>
-                <td><%= link_to "Sell Stock", buyer_stock_path(stock), method: :delete, data: { confirm: "Are you sure you want to sell all quantity of this stock?"} %>            
+                <td><%= link_to "Sell Stock", buyer_stock_path(stock), method: :delete, data: { confirm: "Are you sure you want to sell all quantity of this stock?"}, class: "btn btn-danger" %></td>            
             </tr>
             <% end %>
         </tbody>
     </table>
 <% end %>
 
-<%= link_to "Back", buyer_index_path %>
+<%= button_to "Back", buyer_index_path, {method: 'get', class: "btn btn-sm btn-secondary"} %>

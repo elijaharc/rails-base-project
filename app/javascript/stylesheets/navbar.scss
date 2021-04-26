@@ -73,6 +73,11 @@
   transition: all 0.4s ease;
 }
 
+.inactiveLink {
+   pointer-events: none;
+   cursor: default;
+}
+
 /* Media qurey section */
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -82,7 +87,7 @@
   .nav1 div.main_list ul li a {
     text-align: right;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 

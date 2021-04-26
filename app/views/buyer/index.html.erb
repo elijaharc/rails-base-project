@@ -1,11 +1,10 @@
-<h1>Buyer Landing Page</h1>
 
 <% if @all_stocks.empty? %>
     <p>There are no stocks available.</p>
 <% else %>
-    <h1>All stocks</h1>
-    <table>
-        <thead>
+    <h1 class="text-success">Stocks to buy</h1>
+    <table class="table table-responsive-sm">
+        <thead class="thead-dark">
             <tr>
             <th>Ticker</th>
             <th>Name</th>
@@ -15,20 +14,16 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="text-white">
             <% @all_stocks.each do |stock| %>
             <tr>
                 <td><%= stock.ticker %></td>
                 <td><%= stock.name %></td>
                 <td>$<%= stock.last_price %></td>
-                <td><%= stock.brokers.first.broker_name %></td>
-
-                <%# <td><%= link_to 'Buy', buyer_stock_path(stock)</td> %>
-                <td><%= link_to 'Buy Stock', buyer_stock_path(stock, broker_id: stock.added_by, stock_id: stock.id), method: :get, class: "btn btn-dark" %></span></td>
+                <td class="text-primary"><%= stock.brokers.first.broker_name %></td>
+                <td><%= link_to 'Buy Stock', buyer_stock_path(stock, broker_id: stock.added_by, stock_id: stock.id), method: :get, class: "btn btn-success" %></td>
             </tr>
             <% end %>
         </tbody>
     </table>
 <% end %>
-
-<h3><%= link_to "Buyer Portfolio", buyer_portfolio_path %></h3>
