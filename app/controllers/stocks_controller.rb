@@ -8,8 +8,8 @@ class StocksController < ApplicationController
         end
       else
         respond_to do |format|
-          errors = ['Stock ticker not found.', 'Please enter a valid stock symbol.']
-          flash.now[:invalid_stock] = errors.join('<br/>').html_safe
+          errors = 'Stock ticker not found. Please enter a valid stock symbol.'
+          flash.now[:invalid_stock] = errors
           format.js { render partial: 'broker/search_error' }
         end
       end
