@@ -18,7 +18,7 @@ class Stock < ApplicationRecord
       logo = client.logo(ticker_symbol)
       # ticker is upcased because if not, it doesn't recognize that I've already added the same stock
       new(ticker: ticker_symbol.upcase, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol), logo: logo.url)
-    rescue StandardError => e
+    rescue StandardError
       nil
     end
   end
