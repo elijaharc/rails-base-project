@@ -6,7 +6,7 @@ class BuyerStocksController < ApplicationController
     existing_stock = BuyerStock.check_db(params[:stock][:stock_id], current_buyer.id)
     if existing_stock
       if params[:stock][:quantity].to_i < 1
-        flash[:notice] = 'Quantity cannot be less than 1.'
+        flash[:alert] = 'Quantity cannot be less than 1.'
         redirect_back(fallback_location: root_path)
       else
         new_total = existing_stock.quantity + params[:stock][:quantity].to_i
