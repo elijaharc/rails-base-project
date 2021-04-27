@@ -29,9 +29,9 @@
                 <td class="text-info blockquote p-1"><%= stock.company_name %></td>
                 <td class="font-weight-bold text-success"><%= stock.buyer.email %></td>
                 <td class="font-weight-bold text-primary"><%= stock.broker_name %></td>
-                <td>$<%= stock.stock_price %></td>
+                <td><%= number_to_currency(stock.stock_price) %></td>
                 <td class="text-center"><%= stock.quantity %></td>
-                <td class="blockquote">$<%= ((stock.quantity).to_i * (stock.stock_price).to_f).to_f %></td>
+                <td class="blockquote"><%= number_to_currency((stock.quantity).to_i * (stock.stock_price).to_f) %></td>
             </tr>
             <% end %>
         </tbody>

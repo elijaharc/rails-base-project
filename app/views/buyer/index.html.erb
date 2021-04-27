@@ -19,7 +19,7 @@
             <tr>
                 <td><%= stock.ticker %></td>
                 <td><%= stock.name %></td>
-                <td>$<%= stock.last_price %></td>
+                <td><%= number_to_currency(stock.last_price) %></td>
                 <td class="text-primary"><%= stock.brokers.first.broker_name %></td>
                 <td><%= link_to 'Buy Stock', buyer_stock_path(stock, broker_id: stock.added_by, stock_id: stock.id), method: :get, class: "btn btn-success" %></td>
             </tr>

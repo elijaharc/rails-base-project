@@ -163,6 +163,7 @@
   }
   .nav1 div.logo img {
     margin-left: 15px;
+    margin-top: 5px;
   }
   .nav1 div.main_list {
     width: 100%;
@@ -202,12 +203,12 @@
 
 .navTrigger {
   cursor: pointer;
-  width: 30px;
-  height: 25px;
+  width: 40px;
+  height: 35px;
   margin: auto;
   position: absolute;
   right: 30px;
-  top: 0;
+  top: 60px;
   bottom: 0;
 }
 
