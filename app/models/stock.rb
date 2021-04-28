@@ -28,15 +28,15 @@ class Stock < ApplicationRecord
 
   # Doesn't work in Sandbox ENV
   def self.stock_logo(ticker_symbol)
-      client = IEX::Api::Client.new(
-          publishable_token: ENV["CLOUD_PUBLISHABLE_KEY"],
-          secret_token: ENV["CLOUD_SECRET_KEY"],
-          # publishable_token: Rails.application.credentials.iex_client[:publishable_access_key],
-          # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
-          endpoint: 'https://cloud.iexapis.com/v1'
-        )
-      logo = client.logo(ticker_symbol)
-      logo.url
+    client = IEX::Api::Client.new(
+      publishable_token: ENV['CLOUD_PUBLISHABLE_KEY'],
+        secret_token: ENV['CLOUD_SECRET_KEY'],
+        # publishable_token: Rails.application.credentials.iex_client[:publishable_access_key],
+        # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
+        endpoint: 'https://cloud.iexapis.com/v1'
+    )
+    logo = client.logo(ticker_symbol)
+    logo.url
   end
 
   def self.stock_list
