@@ -1,0 +1,15 @@
+<footer class="footer mt-3">
+    <div class="container">
+        <div class="text-center">
+            <% if buyer_signed_in? %>
+            <p class="text-success lead">Buyer Account | Signed in as <%= current_buyer.email %> <p>
+            <% elsif broker_signed_in? %>
+            <p class="text-primary lead">Broker Account | Name: <%= current_broker.broker_name %> | Signed in as <%= current_broker.email %> <p>
+            <% elsif admin_signed_in? %>
+            <p class="lead">Admin Account | Signed in as <%= current_admin.email %> <p>
+            <% else %>
+            
+            <% end %>
+        </div>
+    </div>
+</footer>

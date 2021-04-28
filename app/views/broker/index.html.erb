@@ -1,18 +1,37 @@
-<div class="container mt-4">
+<div class="container mt-1">
+  <div class="row text-white mb-3">
+    <div class="ticker-wrap">
+      <div class="ticker">
+          <div class="ticker__item blockquote text-primary">Top 10 Most Active Stocks</div>
+         <% @stocks_list.each do |stock| %>
+          <div class="ticker__item blockquote text-danger">|</div>
+          <div class="ticker__item blockquote text-white"><%= stock.symbol %></div>
+          <div class="ticker__item blockquote text-warning"><%= stock.company_name %></div>
+          <div class="ticker__item blockquote text-info"><%= number_to_currency(stock.latest_price) %></div>
+          <div class="ticker__item blockquote text-danger">|</div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
   <div class="row mb-3">
     <div class="col-lg-6 col-md-6 col-sm-12 mb-2 px-5">
-        <h1 class="text-primary">Search Stocks</h1>
+        <h1 class="text-primary"><i class="fas fa-search"></i> Search Stocks</h1>
         <%= form_tag search_stock_path, remote: true, method: :get, :class => "form-signin" do %>
-        <%= text_field_tag :stock, params[:stock], placeholder: 'Enter Stock Ticker...', class: "form-control" %>
+        <%= text_field_tag :stock, params[:stock], placeholder: 'Enter Stock Ticker...', class: "form-control", spellcheck: "false" %>
         <%= button_tag "Submit", id: "stock-search", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Searching..."}, class: "btn btn-lg btn-primary btn-block mt-3"%>
         <% end %>
+
         <div id="search_result">
+
         </div>
     </div>
     
     <div class="col-lg-6 col-md-6 col-sm-12 p-1">
       <table class="table mt-3">
-      <h3 class="text-primary">Top 10 Most Active Stocks</h3>
+       <div class="text-center">
+       <h3 class="text-primary">Top 10 Most Active Stocks</h3>
+       </div>
         <thead class="thead-dark">
           <tr>
           <th>Ticker</th>
@@ -33,4 +52,5 @@
     </div>
 
   </div>
+
 </div>

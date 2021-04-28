@@ -1,50 +1,70 @@
 
 <div class="container mt-4">
- 
   <div class="row mb-3">
-    <div class="col-lg-6 col-md-12 col-sm-12">
-        <h1 class="text-success">Buy Stock</h1>
+    <div class="col-lg-6 col-md-12 col-sm-12 p-3">
+        <h1 class="text-success"><i class="fas fa-shopping-cart"></i> Buy Stock</h1>
         <p class="text-primary lead">From Broker: <%= @broker_stock.brokers.first.broker_name %><br> Email: <%= @broker_stock.brokers.first.email %></p>
-        <div class="card bg-success text-white neumorphic mx-auto" style="width: auto;">
-        <%= form_for @broker_stock, url: :buyer_stocks, class: "form-signin", method: :post do |f| %>
-        <div class="card-body border border-light rounded animate__animated animate__fadeIn">
-            <%= f.hidden_field :broker_id, :value => @broker %>
-            <%= f.hidden_field :broker_id, :value => @broker %>
-            <%= f.hidden_field :stock_id, :value => params[:stock_id] %>
-            <table>
-              <tbody>
-                <tr>
-                  <th><h2 class="card-title">Ticker:</h2</th>
-                  <td><h2 class="card-title"><%= @broker_stock.ticker %></h2></td>
-                </tr>
-                <tr>
-                  <th><h5 class="card-title">Name:</h5></th>
-                  <td><h5 class="card-title"><%= @broker_stock.name %></h5></td>
-                </tr>
-                <tr>
-                  <th><h5 class="card-text"><%= f.label :last_price %></h5</th>
-                  <td><h5 class="card-text">$<%= @broker_stock.last_price %></h5></td>
-                </tr>
-                <tr>
-                  <th><h5 class="card-text"><%= f.label :quantity %></h5></th>
-                  <td><h5 class="card-text"><%= f.number_field :quantity, min: 1, class: "form-control" %></h5></td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="card shadow text-dark mb-3 p-2" style="max-width: 100%;">
+             <%= form_for @broker_stock, url: :buyer_stocks, class: "form-signin", method: :post do |f| %>
+            <div class="row no-gutters">
+              <div class="col-md-4 text-center">
+                <img src="<%= @broker_stock.logo %>" class="card-img rounded" alt="...">
+                <h2 class="card-title mt-2"><%= @broker_stock.ticker %></h2>
+              </div>
+              
+              <div class="col-md-8">
+                <div class="card-body animate__animated animate__fadeIn">
+                  <%= f.hidden_field :broker_id, :value => @broker %>
+                  <%= f.hidden_field :broker_id, :value => @broker %>
+                  <%= f.hidden_field :stock_id, :value => params[:stock_id] %>
 
-            <div class="card-footer text-center animate__animated animate__fadeIn">
-                <%= f.submit "Buy Stock", class: "btn btn-lg btn-primary" %>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th><h5 class="card-title">Name:</h5></th>
+                        <td><h5 class="card-title"><%= @broker_stock.name %></h5></td>
+                      </tr>
+                      <tr>
+                        <th><p class="card-text"><%= f.label :last_price %></p></th>
+                        <td><p class="card-text"><%= number_to_currency(@broker_stock.last_price) %></p></td>
+                      </tr>
+                      <tr>
+                        <th><p class="card-text"><%= f.label :quantity %></p></th>
+                        <td><p class="card-text"><%= f.number_field :quantity, min: 1, max: 999999, class: "form-control" %></p></td>
+                      </tr>
+                      <tr>
+                        <th></th>
+                        <td class="animate__animated animate__fadeIn mt-2"> <%= f.submit "Buy Stock", class: "btn btn-lg btn-success" %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
             </div>
+          </div>
+        <%= link_to "Back", buyer_index_path, class: "btn btn-secondary" %>
         </div>
         <% end %>
-        </div>
-        <br/>
-        <%= link_to "Back", buyer_index_path, class: "btn btn-secondary" %>
-    </div>
-    
-    <div class="col-lg-6 col-md-12 col-sm-12 p-1">
 
-    </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 p-3">
+          <table class="table table-responsive-sm">
+              <thead class="thead-dark">
+                  <tr>
+                  </tr>
+              </thead>
 
+              <tbody class="text-white" style="font-size: 12px;">
+                <% @company_info.each do |key, value| %>
+                  <tr>
+                    <td><%= key.split('_').collect(&:capitalize).join.underscore.humanize %></td>
+                    <td><%= value %><td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div> 
+      </div>
+    </div>
   </div>
 </div>
