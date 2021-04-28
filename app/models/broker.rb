@@ -4,6 +4,8 @@ class Broker < ApplicationRecord
   belongs_to :admin
   validates :broker_name, presence: true
   validates :email, presence: true
+  validates :admin_id, presence: true
+  validates :account_type, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
