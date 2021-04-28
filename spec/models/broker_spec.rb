@@ -6,37 +6,56 @@ RSpec.describe Broker, type: :model do
   it { expect(described_class.new).to validate_presence_of :admin_id }
   it { expect(described_class.new).to validate_presence_of :account_type }
 
-  describe "#methods" do
-    describe "stock_already_added?" do
-      context "when stock searched has not been added before" do
-        let!(:admin) { FactoryBot.create(:admin) }
-        let!(:broker) { FactoryBot.create(:broker) }
-        let!(:stock) { FactoryBot.create(:stock) }
-        it "should return 'false'" do
-          expect(broker.stock_already_added?(stock.ticker, broker.id)).to be_falsy
-        end
-      end
+  describe 'stock_already_added?' do
+    context 'when stock searched has not been added before' do
+      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:stock) { FactoryBot.create(:stock) }
 
-      context "when stock searched has been added before" do
-        let!(:admin) { FactoryBot.create(:admin) }
-        let!(:broker) { FactoryBot.create(:broker) }
-        let!(:stock) { FactoryBot.create(:stock) }
-        it "should return 'true'" do
-          broker.stocks << stock
-          expect(broker.stock_already_added?(stock.ticker, broker.id)).to be_truthy
-        end
-      end
-
-    describe "can_add_stock?" do
-      context "when stock can be added by broker" do
-        let!(:admin) { FactoryBot.create(:admin) }
-        let!(:broker) { FactoryBot.create(:broker) }
-        let!(:stock) { FactoryBot.create(:stock) }
-        it "should return 'false'" do
-          expect(broker.can_add_stock?(stock.ticker, broker.id)).to be_falsy
-        end
+      it "returns 'false'" do
+        expect(broker).not_to be_stock_already_added(stock.ticker, broker.id)
       end
     end
+
+    context 'when stock has been added before' do
+      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:stock) { FactoryBot.create(:stock) }
+
+      it "returns 'true'" do
+        broker.stocks << stock
+        expect(broker).to be_stock_already_added(stock.ticker, broker.id)
+      end
+    end
+  end
+
+  describe 'can_add_stock?' do
+    context 'when stock can be added by broker' do
+      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:stock) { FactoryBot.create(:stock) }
+
+      it "returns 'true'" do
+        expect(broker).to be_can_add_stock(stock.ticker, broker.id)
+      end
+    end
+
+    context "when stock can't be added by broker" do
+      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:stock) { FactoryBot.create(:stock) }
+
+      it "returns 'false'" do
+        broker.stocks << stock
+        expect(broker).not_to be_can_add_stock(stock.ticker, broker.id)
+      end
+    end
+  end
+
+  describe 'after_confirmation' do
+    context 'when app has sent out a welcome email' do
+      let!(:broker) { FactoryBot.create(:broker) }
+
+      it "returns that an email has been sent to broker's email" do
+        broker.after_confirmation
+        expect(ActionMailer::Base.deliveries[0].to).to include(broker.email)
+      end
     end
   end
 end
