@@ -4,11 +4,13 @@
 
 html {
   scroll-behavior: smooth;
+  position: relative;
+  min-height: 100%;
 }
 
 .cover-container {
   margin-top: 100px;
-  max-width: 65em;
+  max-width: 70em;
 }
 
 tr td{
@@ -40,4 +42,8 @@ margin: 0 auto;
 
 i {
  cursor: pointer;
+}
+
+.w-35 {
+  width: 35%;
 }

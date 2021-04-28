@@ -25,6 +25,9 @@ import '../stylesheets/application'
 import '../stylesheets/navbar'
 import '../stylesheets/form'
 import '../stylesheets/card'
+import '../stylesheets/ticker'
+import '../stylesheets/footer'
+import '../stylesheets/scrollbar'
 // import '../stylesheets/normalize'
 
 document.addEventListener('turbolinks:load', () => {
