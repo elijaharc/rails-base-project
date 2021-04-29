@@ -8,11 +8,14 @@ class BuyerStock < ApplicationRecord
 
   def self.check_info(ticker)
     client = IEX::Api::Client.new(
-      publishable_token: ENV["CLOUD_PUBLISHABLE_KEY"],
-      secret_token: ENV["CLOUD_SECRET_KEY"],
+      publishable_token: ENV['CLOUD_PUBLISHABLE_KEY'],
+      secret_token: ENV['CLOUD_SECRET_KEY'],
       endpoint: 'https://cloud.iexapis.com/v1'
     )
-      company = client.company(ticker)
+    begin
+      client.company(ticker)
+    rescue StandardError
+      nil
+    end
   end
-
 end
