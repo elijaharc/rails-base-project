@@ -12,6 +12,7 @@
     "data-confirm-modal": "^1.6.2",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
+    "rfs": "^9.0.3",
     "toastr": "^2.1.4",
     "turbolinks": "^5.2.0"
   },
