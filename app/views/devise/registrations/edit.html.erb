@@ -1,9 +1,9 @@
 
 
 <% if buyer_signed_in? %>
-<div class="container text-success p-5">
+<div class="container text-success p-2">
 <% elsif broker_signed_in? %>
-<div class="container text-primary p-5">
+<div class="container text-primary p-2">
 <% end %>
   <div class="row">
       <div class="col-lg-6 col-sm-12 mb-5 px-5 ">
@@ -55,7 +55,7 @@
               <% end %>
             </div>
           <% end %>
-
+          <%= link_to "Back", root_path, class: "btn btn-sm btn-secondary mt-2" %>
       </div>
       <div class="col-lg-6 col-sm-12 p-5 text-center">
           <%= image_tag ('account.svg'), style: "width: 100%; max-width: 220px; height: auto;" %>
@@ -63,7 +63,6 @@
 
           <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger mt-3", data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-          <%= link_to "Back", root_path, class: "btn btn-sm btn-secondary" %>
       </div>
   </div>
 </div>

@@ -1,20 +1,55 @@
 <div class="container text-center">
   <div class="row">
-      <div class="col-lg-6 col-sm-12 p-1">
-        <h1 class="text-success">Buyer</h1>
-        <%= image_tag ('buyer.svg'), style: "width: 100%; max-width: 350px; height: auto;" %>
-        <div class="btn-group" role="group">
-        <%= link_to "Sign in as Buyer", new_buyer_session_path, class: "btn btn-success mr-2" %>
-        <%= link_to "Sign up as Buyer", new_buyer_registration_path, class: "btn btn-success" %>
-        </div>
+
+      <div class="col-lg-4 col-md-12 col-sm-12 p-2 mb-5">
+          <div class="text-lg-left text-md-center text-sm-center p-1">
+          <%= image_tag ('sa.svg'), style: "width: 80%; max-width: 250px; height: auto;" %>
+          <p class="text-white font-14 mr-2">Leverage is the reason some people become rich and others do not. - R.K.</p>
+          <br/>
+          <h3 class="text-white">Buy Stocks.</h3>
+          <h3 class="text-white">Sell Stocks.</h3>
+          <h1 class="text-white">EARN BIG!</h1>
+          </div>
       </div>
-      <div class="col-lg-6 col-sm-12 p-1">
-        <h1 class="text-primary">Broker</h1>
-        <%= image_tag ('broker.svg'), style: "width: 100%; max-width: 350px; height: auto;" %>
-        <div class="btn-group" role="group">
-        <%= link_to "Sign in as Broker", new_broker_session_path, class: "btn btn-primary mr-2" %>
-        <%= link_to "Sign up as Broker", new_broker_registration_path, class: "btn btn-primary" %>
-        </div>
+
+      <div class="col-lg-8 col-md-12 col-sm-12 p-2 mb-5">
+                <div class="container text-center">
+                  <div class="row">
+  
+                    <div class="container text-center mt-3">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                              <div class="card shadow border-success mb-3" style="max-width: 100%; border-radius: 30px;">
+                                  <div class="card-body">
+                                    <h1 class="text-success">For Buyers</h1>
+                                    <%= image_tag ('buyer.svg'), style: "width: 100%; max-width: 400px; height: auto;" %>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                    <%= link_to "Sign in as Buyer", new_buyer_session_path, class: "btn btn-sm bg-success text-white mr-2" %>
+                                    <%= link_to "Sign up as Buyer", new_buyer_registration_path, class: "btn btn-sm btn-success" %>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                              <div class="card shadow border-primary mb-3" style="max-width: 100%; border-radius: 30px;">
+                                <div class="card-body">
+                                <h1 class="text-primary">For Brokers</h1>
+                                  <%= image_tag ('broker.svg'), style: "width: 100%; max-width: 400px; height: auto;" %>
+                                  <div class="btn-group btn-group-sm" role="group">
+                                  <%= link_to "Sign in as Broker", new_broker_session_path, class: "btn btn-sm bg-primary text-white mr-2" %>
+                                  <%= link_to "Sign up as Broker", new_broker_registration_path, class: "btn btn-sm btn-primary" %>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
       </div>
+
   </div>
 </div>
+
+  

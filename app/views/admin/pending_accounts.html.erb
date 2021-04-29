@@ -7,7 +7,7 @@
 
     <% if !@pending_brokers.empty? %>
     <h4 class="text-primary">Pending Broker Accounts</h4>
-      <table class="table mt-3">
+      <table class="table table-responsive-sm mt-3">
         <thead class="bg-primary text-white">
           <tr>
           <th>Broker ID</th>
@@ -24,7 +24,7 @@
             <td><%= broker.broker_name %></td>
             <td class="text-primary"><%= broker.email %></td>
             <td><%= broker.created_at.to_formatted_s(:long) %></td>
-            <td><%= link_to "Confirm Account", confirm_broker_path(broker), class: "btn btn-warning" %></td>
+            <td><%= link_to "Confirm Account", confirm_broker_path(broker), class: "btn btn-sm btn-warning" %></td>
           </tr>
           <% end %>
         </tbody>
@@ -37,7 +37,7 @@
 
     <% if !@pending_buyers.empty? %>
     <h4 class="text-success">Pending Buyer Accounts</h4>
-      <table class="table mt-3">
+      <table class="table table-responsive-sm mt-3">
         <thead class="bg-success text-white">
           <tr>
           <th>Buyer ID</th>
@@ -50,9 +50,9 @@
           <% @pending_buyers.each do |buyer| %>
           <tr>
             <td><%= buyer.id %></td>
-            <td class="text-success"><%= buyer.email %></td>
+            <td class="text-success"><%= buyer.email.truncate(30) %></td>
             <td><%= buyer.created_at.to_formatted_s(:long) %></td>
-            <td><%= link_to "Confirm Account", confirm_buyer_path(buyer), class: "btn btn-warning" %></td>
+            <td><%= link_to "Confirm Account", confirm_buyer_path(buyer), class: "btn btn-sm btn-warning" %></td>
           </tr>
           <% end %>
         </tbody>

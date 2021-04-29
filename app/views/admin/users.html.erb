@@ -33,8 +33,8 @@
           <% @all_brokers.each do |broker| %>
           <tr>
             <td class="font-weight-bold"><%= broker.id %></td>
-            <td><%= broker.broker_name %></td>
-            <td><%= broker.email %></td>
+            <td><%= broker.broker_name.truncate(15) %></td>
+            <td><%= broker.email.truncate(15) %></td>
             <td><%= link_to '', show_broker_path(broker), method: :get, class: "fas fa-eye text-primary", style: "text-decoration: none;" %></td>
             <td><%= link_to '', edit_broker_path(broker), method: :get, class: "fas fa-edit text-primary", style: "text-decoration: none;" %></td>
           </tr>
@@ -63,7 +63,7 @@
           <% @all_buyers.each do |buyer| %>
           <tr>
             <td class="font-weight-bold"><%= buyer.id %></td>
-            <td><%= buyer.email %></td>
+            <td><%= buyer.email.truncate(15) %></td>
             <td><%= link_to '', show_buyer_path(buyer), method: :get, class: "fas fa-eye text-success", style: "text-decoration: none;" %></td>
             <td><%= link_to '', edit_buyer_path(buyer), method: :get, class: "fas fa-edit text-success", style: "text-decoration: none;" %></td>
           </tr>

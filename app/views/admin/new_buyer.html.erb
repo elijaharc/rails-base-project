@@ -1,7 +1,7 @@
-<div class="container text-success mt-2">
+<div class="container text-success">
   <div class="row">
           
-   <div class="col-lg-6 col-sm-12 mb-5">
+   <div class="col-lg-6 col-sm-12 mb-3">
         <h1>Create a new Buyer</h1>
 
         <%= form_for @buyer, :url => {:action => "new_buyer"}, class: "form-signin" do |f| %>
@@ -13,10 +13,11 @@
             <%= f.password_field :password_confirmation, class: "form-control" %>
             <%= f.submit "Create Buyer", class: "btn btn-lg btn-success btn-block mt-3" %>
         <% end %>
+        <%= button_to "Back", admin_users_path, {method: 'get', class: "btn btn-sm btn-secondary mt-4"} %>
    </div>
       
    <div class="col-lg-6 col-sm-12 p-5">
-        <%= image_tag ('buyer.svg') %>
+        <%= image_tag ('buyer.svg'), style: "width: 100%; max-width: 350px; height: auto;" %>
    </div>
   
   </div>
