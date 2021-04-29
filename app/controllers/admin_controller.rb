@@ -29,7 +29,7 @@ class AdminController < ApplicationController
     @broker.admin_id = Admin.first.id
     @broker.skip_confirmation!
     if @broker.save
-      redirect_to admin_pending_accounts_path, notice: 'Broker created successfully.'
+      redirect_to admin_users_path, notice: 'Broker created successfully.'
     else
       flash[:alert] = @broker.errors.full_messages.to_sentence
       render action: 'new_broker'
@@ -41,7 +41,7 @@ class AdminController < ApplicationController
     @buyer.admin_id = Admin.first.id
     @buyer.skip_confirmation!
     if @buyer.save
-      redirect_to admin_pending_accounts_path, notice: 'Buyer created successfully.'
+      redirect_to admin_users_path, notice: 'Buyer created successfully.'
     else
       flash[:alert] = @buyer.errors.full_messages.to_sentence
       render action: 'new_buyer'
