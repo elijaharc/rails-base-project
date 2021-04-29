@@ -28,6 +28,7 @@ import '../stylesheets/card'
 import '../stylesheets/ticker'
 import '../stylesheets/footer'
 import '../stylesheets/scrollbar'
+// import '../stylesheets/rfs'
 // import '../stylesheets/normalize'
 
 document.addEventListener('turbolinks:load', () => {
