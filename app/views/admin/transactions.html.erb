@@ -1,41 +1,48 @@
-<div class="text-center">
-<h1 class="display-4">All Transactions</h1>
+<div class="container">
+ <div class="row">
+   <div class="col p-5">
+    <div class="text-center">
+    <h1 class="display-4">All Transactions</h1>
+    </div>
+
+    <% if @transactions.empty? %>
+        <p>There are no transactions yet.</p>
+    <% else %>
+        <table class="table table-responsive-sm mt-3">
+            <thead class="thead-dark">
+                <tr>
+                <th>Stock ID</th>
+                <th>Date Purchased</th>
+                <th>Ticker</th>
+                <th>Company</th>
+                <th>Buyer</th>
+                <th>Broker</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Cost</th>
+                </tr>
+            </thead>
+
+            <tbody class="text-white">
+                <% @transactions.each do |stock| %>
+                <tr>
+                    <td><%= stock.id %></td>
+                    <td><%= stock.created_at.to_formatted_s(:long) %></td>
+                    <td class="text-danger blockquote"><%= stock.ticker %></td>
+                    <td class="text-info blockquote p-1"><%= stock.company_name %></td>
+                    <td class="font-weight-bold text-success"><%= stock.buyer.email %></td>
+                    <td class="font-weight-bold text-primary"><%= stock.broker_name %></td>
+                    <td><%= number_to_currency(stock.stock_price) %></td>
+                    <td class="text-center"><%= stock.quantity %></td>
+                    <td class="blockquote"><%= number_to_currency((stock.quantity).to_i * (stock.stock_price).to_f) %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    <% end %>
+
+    <%= button_to "Back", admin_index_path, {method: 'get', class: "btn btn-lg btn-secondary"} %>
+
+  </div>
+ </div>
 </div>
-
-<% if @transactions.empty? %>
-    <p>There are no transactions yet.</p>
-<% else %>
-    <table class="table mt-3">
-        <thead class="thead-dark">
-            <tr>
-            <th>Stock ID</th>
-            <th>Date Purchased</th>
-            <th>Ticker</th>
-            <th>Company</th>
-            <th>Buyer</th>
-            <th>Broker</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total Cost</th>
-            </tr>
-        </thead>
-
-        <tbody class="text-white">
-            <% @transactions.each do |stock| %>
-            <tr>
-                <td><%= stock.id %></td>
-                <td><%= stock.created_at.to_formatted_s(:long) %></td>
-                <td class="text-danger blockquote"><%= stock.ticker %></td>
-                <td class="text-info blockquote p-1"><%= stock.company_name %></td>
-                <td class="font-weight-bold text-success"><%= stock.buyer.email %></td>
-                <td class="font-weight-bold text-primary"><%= stock.broker_name %></td>
-                <td>$<%= stock.stock_price %></td>
-                <td class="text-center"><%= stock.quantity %></td>
-                <td class="blockquote">$<%= ((stock.quantity).to_i * (stock.stock_price).to_f).to_f %></td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-<% end %>
-
-<%= button_to "Back", admin_index_path, {method: 'get', class: "btn btn-lg btn-secondary"} %>

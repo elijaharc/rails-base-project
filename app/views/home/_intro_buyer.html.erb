@@ -1,7 +1,12 @@
 <div class="container text-center w-100">
+ <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 mx-auto">
+      <%= image_tag ('stockapp.svg'), style: "width: 100%; max-width: 300px; height: auto;" %>
+    </div>
+  </div>
   <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
-        <h5 class="text-success">Welcome Buyer!</h5>
+        <h5 class="text-success">Welcome Buyer <%= current_buyer.email %>!</h5>
         <div class="btn-group" role="group">
             <%= link_to "Stocks to buy", buyer_index_path, class: "btn btn-sm btn-success mr-1" %>
             <%= link_to "Buyer Portfolio", buyer_portfolio_path, class: "btn btn-sm btn-success mr-1" %>
@@ -11,7 +16,7 @@
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
-        <%= image_tag ('buyer.svg'), style: "min-width: 30%; width: 50%;", class: "img-fluid" %>
+        <%= image_tag ('buyer.svg'), style: "width: 100%; max-width: 350px; height: auto;" %>
       </div>
   </div>
 </div>

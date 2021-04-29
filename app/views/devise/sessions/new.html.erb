@@ -39,8 +39,10 @@
         <div class="actions">
           <% if resource.account_type == "buyer" %>
             <%= f.button "Sign in", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>"}, class: "btn btn-lg btn-success btn-block mt-3" %>
-          <% else %>
+          <% elsif resource.account_type == "broker" %>
             <%= f.button "Sign in", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>"}, class: "btn btn-lg btn-primary btn-block mt-3" %>
+          <% else %>
+            <%= f.button "Sign in", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>"}, class: "btn btn-lg btn-secondary btn-block mt-3" %>
           <% end %>
         </div>
         <% end %>

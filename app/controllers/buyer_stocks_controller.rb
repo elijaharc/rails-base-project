@@ -24,6 +24,8 @@ class BuyerStocksController < ApplicationController
   end
 
   def show
+    stock = Stock.find(params[:id])
+    @company_info = BuyerStock.check_info(stock.ticker)
     @broker_stock = Stock.find(params[:id])
   end
 

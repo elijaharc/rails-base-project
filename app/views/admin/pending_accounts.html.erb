@@ -1,61 +1,67 @@
-<div class="text-center">
-<h1 class="display-4 mb-5">Showing All Pending Accounts</h1>
+<div class="container">
+ <div class="row">
+  <div class="col p-5">
+    <div class="text-center">
+    <h1 class="display-4 mb-5">Showing All Pending Accounts</h1>
+    </div>
+
+    <% if !@pending_brokers.empty? %>
+    <h4 class="text-primary">Pending Broker Accounts</h4>
+      <table class="table mt-3">
+        <thead class="bg-primary text-white">
+          <tr>
+          <th>Broker ID</th>
+          <th>Broker Name</th>
+          <th>Broker Email</th>
+          <th>Created At</th>
+          <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="text-white">
+          <% @pending_brokers.each do |broker| %>
+          <tr>
+            <td><%= broker.id %></td>
+            <td><%= broker.broker_name %></td>
+            <td class="text-primary"><%= broker.email %></td>
+            <td><%= broker.created_at.to_formatted_s(:long) %></td>
+            <td><%= link_to "Confirm Account", confirm_broker_path(broker), class: "btn btn-warning" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>There are no unconfirmed broker accounts.</p>
+    <% end %>
+
+    <br>
+
+    <% if !@pending_buyers.empty? %>
+    <h4 class="text-success">Pending Buyer Accounts</h4>
+      <table class="table mt-3">
+        <thead class="bg-success text-white">
+          <tr>
+          <th>Buyer ID</th>
+          <th>Buyer Email</th>
+          <th>Created At</th>
+          <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="text-white">
+          <% @pending_buyers.each do |buyer| %>
+          <tr>
+            <td><%= buyer.id %></td>
+            <td class="text-success"><%= buyer.email %></td>
+            <td><%= buyer.created_at.to_formatted_s(:long) %></td>
+            <td><%= link_to "Confirm Account", confirm_buyer_path(buyer), class: "btn btn-warning" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>There are no unconfirmed buyer accounts.</p>
+    <% end %>
+    </div>
+  </div>
 </div>
-
-<% if !@pending_brokers.empty? %>
-<h4 class="text-primary">Pending Broker Accounts</h4>
-  <table class="table mt-3">
-    <thead class="bg-primary text-white">
-      <tr>
-      <th>Broker ID</th>
-      <th>Broker Name</th>
-      <th>Broker Email</th>
-      <th>Created At</th>
-      <th>Action</th>
-      </tr>
-    </thead>
-    <tbody class="text-white">
-      <% @pending_brokers.each do |broker| %>
-      <tr>
-        <td><%= broker.id %></td>
-        <td><%= broker.broker_name %></td>
-        <td class="text-primary"><%= broker.email %></td>
-        <td><%= broker.created_at.to_formatted_s(:long) %></td>
-        <td><%= link_to "Confirm Account", confirm_broker_path(broker), class: "btn btn-warning" %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>There are no unconfirmed broker accounts.</p>
-<% end %>
-
-<br>
-
-<% if !@pending_buyers.empty? %>
-<h4 class="text-success">Pending Buyer Accounts</h4>
-  <table class="table mt-3">
-    <thead class="bg-success text-white">
-      <tr>
-      <th>Buyer ID</th>
-      <th>Buyer Email</th>
-      <th>Created At</th>
-      <th>Action</th>
-      </tr>
-    </thead>
-    <tbody class="text-white">
-      <% @pending_buyers.each do |buyer| %>
-      <tr>
-        <td><%= buyer.id %></td>
-        <td class="text-success"><%= buyer.email %></td>
-        <td><%= buyer.created_at.to_formatted_s(:long) %></td>
-        <td><%= link_to "Confirm Account", confirm_buyer_path(buyer), class: "btn btn-warning" %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>There are no unconfirmed buyer accounts.</p>
-<% end %>
   
     

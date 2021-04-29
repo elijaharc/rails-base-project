@@ -17,8 +17,17 @@
       "showMethod": "fadeIn",
       "hideMethod": "fadeOut"
     }
-      toastr.success('<%= notice %>')
+
+    let noticeString = '<%= notice %>'
+
+    if (noticeString.includes("blank")) {
+      toastr.error('<%= notice %>');
+    } else {
+      toastr.success('<%= notice %>');
+    }
+
     </script>
+
 <% end %>
 
 <% if alert %>
@@ -43,4 +52,3 @@
       toastr.error('<%= alert %>')
     </script>
 <% end %>
-
