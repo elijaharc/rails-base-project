@@ -35,8 +35,12 @@ class Stock < ApplicationRecord
         # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
         endpoint: 'https://cloud.iexapis.com/v1'
     )
-    logo = client.logo(ticker_symbol)
-    logo.url
+    begin
+      logo = client.logo(ticker_symbol)
+      logo.url
+    rescue StandardError
+      nil
+    end
   end
 
   def self.stock_list
