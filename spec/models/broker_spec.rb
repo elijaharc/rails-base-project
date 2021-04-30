@@ -8,7 +8,7 @@ RSpec.describe Broker, type: :model do
 
   describe 'stock_already_added?' do
     context 'when stock searched has not been added before' do
-      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:broker) { FactoryBot.create(:broker_one) }
       let!(:stock) { FactoryBot.create(:stock) }
 
       it "returns 'false'" do
@@ -17,7 +17,7 @@ RSpec.describe Broker, type: :model do
     end
 
     context 'when stock has been added before' do
-      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:broker) { FactoryBot.create(:broker_one) }
       let!(:stock) { FactoryBot.create(:stock) }
 
       it "returns 'true'" do
@@ -29,7 +29,7 @@ RSpec.describe Broker, type: :model do
 
   describe 'can_add_stock?' do
     context 'when stock can be added by broker' do
-      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:broker) { FactoryBot.create(:broker_one) }
       let!(:stock) { FactoryBot.create(:stock) }
 
       it "returns 'true'" do
@@ -38,7 +38,7 @@ RSpec.describe Broker, type: :model do
     end
 
     context "when stock can't be added by broker" do
-      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:broker) { FactoryBot.create(:broker_one) }
       let!(:stock) { FactoryBot.create(:stock) }
 
       it "returns 'false'" do
@@ -50,7 +50,7 @@ RSpec.describe Broker, type: :model do
 
   describe 'after_confirmation' do
     context 'when app has sent out a welcome email' do
-      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:broker) { FactoryBot.create(:broker_one) }
 
       it "returns that an email has been sent to broker's email" do
         broker.after_confirmation
