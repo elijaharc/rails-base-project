@@ -7,7 +7,13 @@
     <meta name="author" content="E&M - Devs">
     <title>Stock App</title>
 
-    <%= favicon_link_tag asset_path('') %>
+    <meta property="og:title" content="Stock App"/>
+    <meta content="Buy Stocks! Sell Stocks! Earn Big!" />
+    <meta property="og:image" content="https://i.imgur.com/12gc82G.png" />
+    <meta property="og:url" content="https://stockapp-avion.herokuapp.com/"/>
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <%= favicon_link_tag asset_path('sa_logo.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
