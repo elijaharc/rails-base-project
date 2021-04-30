@@ -9,7 +9,7 @@ RSpec.describe Stock, type: :model, vcr: true do
   describe 'new_search' do
     context 'when IEX Gem search is valid' do
       it 'creates the stock object' do
-        expect(described_class.new_search('GOOG')).to be_a_kind_of Object
+        expect(described_class.new_search('GOOG')).to be_an_instance_of described_class
       end
     end
 
@@ -22,21 +22,21 @@ RSpec.describe Stock, type: :model, vcr: true do
 
   describe 'check_db' do
     context 'when stock has not yet been added by broker' do
-      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:broker) { FactoryBot.create(:broker_two) }
       let!(:stock) { FactoryBot.create(:stock) }
 
       it "returns 'nil'" do
-        expect(described_class.check_db(stock.id, broker.id)).to be_nil
+        expect(described_class.check_db(stock.ticker, broker.id)).to be_nil
       end
     end
 
     context 'when stock has already been added by broker' do
-      let!(:broker) { FactoryBot.create(:broker) }
+      let!(:broker) { FactoryBot.create(:broker_one) }
       let!(:stock) { FactoryBot.create(:stock) }
 
       it 'returns the stock object' do
         broker.stocks << stock
-        expect(described_class.check_db(stock.id, broker.id)).to be_a_kind_of Object
+        expect(described_class.check_db(stock.ticker, broker.id)).to be_an_instance_of described_class
       end
     end
   end
