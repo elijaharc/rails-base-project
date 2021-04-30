@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Stock, type: :model do
+RSpec.describe Stock, type: :model, vcr: true do
   it { expect(described_class.new).to validate_presence_of :name }
   it { expect(described_class.new).to validate_presence_of :ticker }
   it { expect(described_class.new).to validate_presence_of :last_price }
