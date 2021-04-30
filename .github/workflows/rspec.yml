@@ -46,3 +46,5 @@ jobs:
           DATABASE_USERNAME: "postgres"
           DATABASE_PASSWORD: "test"
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          CLOUD_PUBLISHABLE_KEY: 'pk_886a36dcedf5412ba285eb947572d622'
+          CLOUD_SECRET_KEY: 'sk_b21cd2d3163a48648006bb57bf56abbe'
