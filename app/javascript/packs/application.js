@@ -19,6 +19,7 @@ Turbolinks.start()
 ActiveStorage.start()
 require('data-confirm-modal')
 
+
 import 'bootstrap'
 import 'jquery'
 import '../stylesheets/application'
@@ -28,6 +29,7 @@ import '../stylesheets/card'
 import '../stylesheets/ticker'
 import '../stylesheets/footer'
 import '../stylesheets/scrollbar'
+// import '../custom/testingIfjQueryWorks.js'
 // import '../stylesheets/rfs'
 // import '../stylesheets/normalize'
 
