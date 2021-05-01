@@ -17,7 +17,7 @@ RSpec.describe BuyerStock, type: :model do
 
       it 'returns the stock object' do
         buyer.stocks << stock
-        expect(described_class.check_db(stock.id, buyer.id)).to be_a_kind_of Object
+        expect(described_class.check_db(stock.id, buyer.id)).to be_an_instance_of described_class
       end
     end
   end
@@ -25,7 +25,7 @@ RSpec.describe BuyerStock, type: :model do
   describe 'check_info' do
     context 'when requesting for valid company information from IEX Gem' do
       it 'returns company information object' do
-        expect(described_class.check_info('GOOG')).to be_a_kind_of Object
+        expect(described_class.check_info('GOOG')).not_to be_a_kind_of described_class
       end
     end
 
