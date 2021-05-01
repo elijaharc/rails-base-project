@@ -1,4 +1,5 @@
 <% if notice %>
+  <div id="toaster-notice">
     <script>
       toastr.options = {
       "closeButton": true,
@@ -27,10 +28,11 @@
     }
 
     </script>
-
+  </div>
 <% end %>
 
 <% if alert %>
+  <div id="toaster-alert">
     <script>
       toastr.options = {
         "closeButton": true,
@@ -51,4 +53,5 @@
       }
       toastr.error('<%= alert %>')
     </script>
+  </div>
 <% end %>
