@@ -15,13 +15,13 @@
             <% if resource.account_type == "broker" %>  
               <div class="field">
                 <%= f.label :broker_name %><br />
-                <%= f.text_field :broker_name, autofocus: true, autocomplete: "broker name", class: "form-control" %>
+                <%= f.text_field :broker_name, autocomplete: "broker name", class: "form-control" %>
               </div>
             <% end %>
 
             <div class="field">
               <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
