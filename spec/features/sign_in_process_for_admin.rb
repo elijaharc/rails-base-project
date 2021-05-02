@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Sign in process for admin', type: :feature do
-  context 'when valid admin credentials' do
+  context 'when signing in with valid admin credentials' do
     let!(:admin) { attributes_for :admin }
 
     before do
@@ -14,14 +14,14 @@ RSpec.describe 'Sign in process for admin', type: :feature do
       end
     end
 
-    it 'Admin sign in success' do
+    it 'Admin signed in success' do
       # expect(page).to have_css('#toaster-notice')
       # expect(page).to have_content 'Signed in as'
       expect(page).to have_current_path admin_index_path, ignore_query: true
     end
   end
 
-  context 'when invalid admin credentials' do
+  context 'when signing in with invalid admin credentials' do
     before do
       FactoryBot.create(:admin)
       visit new_admin_session_path
@@ -32,7 +32,7 @@ RSpec.describe 'Sign in process for admin', type: :feature do
       end
     end
 
-    it 'Admin sign in invalid' do
+    it 'Admin signed in invalid' do
       # expect(page).to have_css('#toaster-alert')
       expect(page).to have_current_path new_admin_session_path, ignore_query: true
     end

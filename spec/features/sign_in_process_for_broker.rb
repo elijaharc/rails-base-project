@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Sign in process for broker', type: :feature do
-  context 'when valid broker credentials' do
+  context 'when signing in with valid broker credentials' do
     let!(:broker) { attributes_for :broker_one }
 
     before do
@@ -14,14 +14,14 @@ RSpec.describe 'Sign in process for broker', type: :feature do
       end
     end
 
-    it 'Broker sign in success' do
+    it 'Broker signed in success' do
       # expect(page).to have_css('#toaster-notice')
       # expect(page).to have_content 'Signed in as'
       expect(page).to have_current_path broker_index_path, ignore_query: true
     end
   end
 
-  context 'when invalid broker credentials' do
+  context 'when signing in with invalid broker credentials' do
     before do
       FactoryBot.create(:broker_one)
       visit new_broker_session_path
@@ -32,7 +32,7 @@ RSpec.describe 'Sign in process for broker', type: :feature do
       end
     end
 
-    it 'Broker sign in invalid' do
+    it 'Broker signed in invalid' do
       # expect(page).to have_css('#toaster-alert')
       expect(page).to have_current_path new_broker_session_path, ignore_query: true
     end

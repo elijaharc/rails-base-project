@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Sign in process for buyer', type: :feature do
-  context 'when valid buyer credentials' do
+  context 'when signing in with valid buyer credentials' do
     let!(:buyer) { attributes_for :buyer }
 
     before do
@@ -14,14 +14,14 @@ RSpec.describe 'Sign in process for buyer', type: :feature do
       end
     end
 
-    it 'Buyer sign in success' do
+    it 'Buyer signed in success' do
       # expect(page).to have_css('#toaster-notice')
       # expect(page).to have_content 'Signed in as'
       expect(page).to have_current_path buyer_index_path, ignore_query: true
     end
   end
 
-  context 'when invalid buyer credentials' do
+  context 'when signing in with invalid buyer credentials' do
     before do
       FactoryBot.create(:buyer)
       visit new_buyer_session_path
@@ -32,7 +32,7 @@ RSpec.describe 'Sign in process for buyer', type: :feature do
       end
     end
 
-    it 'Buyer sign in invalid' do
+    it 'Buyer signed in invalid' do
       # expect(page).to have_css('#toaster-alert')
       expect(page).to have_current_path new_buyer_session_path, ignore_query: true
     end
