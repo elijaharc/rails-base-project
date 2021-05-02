@@ -21,7 +21,7 @@
 
     let noticeString = '<%= notice %>'
 
-    if (noticeString.includes("blank")) {
+    if (noticeString.includes("blank") || noticeString.includes("taken") || noticeString.includes("doesn't")) {
       toastr.error('<%= notice %>');
     } else {
       toastr.success('<%= notice %>');
