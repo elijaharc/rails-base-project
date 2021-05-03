@@ -30,7 +30,7 @@
                     <td><%= stock.created_at.to_formatted_s(:long) %></td>
                     <td class="text-danger blockquote"><%= stock.ticker %></td>
                     <td class="text-info blockquote p-1"><%= stock.company_name %></td>
-                    <td class="font-weight-bold text-success"><%= stock.buyer.email %></td>
+                    <td class="font-weight-bold text-success"><%= stock.buyer_email %></td>
                     <td class="font-weight-bold text-primary"><%= stock.broker_name %></td>
                     <td><%= number_to_currency(stock.stock_price) %></td>
                     <td class="text-center"><%= stock.quantity %></td>
